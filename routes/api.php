@@ -48,7 +48,7 @@ Route::group(['prefix' => 'petugas'], function () {
 Route::group(['prefix' => 'dinkes'], function () {
     Route::post('login', 'api\auth\AuthDinkes\LoginController@login');
     Route::get('profile', 'api\DinkesController@profile')->middleware('auth:api_dinkes');
-    oute::get('update', 'api\DinkesController@update')->middleware('auth:api_dinkes');
+    Route::get('update', 'api\DinkesController@update')->middleware('auth:api_dinkes');
     Route::get('dataconfirmedI','api\BerkasController@dataConfirmedI')->middleware('auth:api_dinkes');
     Route::post('berkas/{data}', 'api\BerkasController@confirmed_II')->middleware('auth:api_dinkes');
 });
