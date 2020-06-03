@@ -46,12 +46,12 @@
                                     <td>{{$loop->iteration + ($aktivitas->perPage() *($aktivitas->currentPage()-1))}} </td>
                                     <td>{{$row->waris->nama}}</td>
                                     <td>{{$row->created_at->format('d/m/Y')}}</td>
-                                    <td>@if ($row->confirmed_I === 1)
-                                        <button type="button" class="btn btn-primary">sukses</button> 
+                                    <td>@if ($row->confirmed_I === true)
+                                        <button  class="label label-success">sukses</button> 
                                         @elseif($row->confirmed_I === null)
-                                        <button type="button" class="btn btn-warning">Sedang dievaluasi</button>  
+                                        <button  class="label label-warning">Sedang dievaluasi</button>  
                                         @else
-                                        <button type="button" class="btn btn-danger">Sedang ditolak</button>
+                                        <button  class="label label-denger">ditolak</button>
                                     @endif</td>
                                     <td>{{$row->petugas->nama}}</td>
                                     <td>
