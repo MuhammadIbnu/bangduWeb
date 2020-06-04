@@ -49,6 +49,11 @@ class Petugas extends Authenticatable
     {
         return $this->belongsTo('App\Data', 'kd_petugas', 'id');
     }
+
+    public function survey()
+    {
+        return $this->belongsTo('App\Survey', 'kd_petugas', 'id');
+    }
     
   
 }
