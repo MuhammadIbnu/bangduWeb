@@ -36,6 +36,7 @@ Route::group(['prefix' => 'waris'], function () {
 Route::group(['prefix' => 'petugas'], function () {
     Route::post('login', 'api\auth\AuthPetugas\LoginController@login');
     Route::get('profile', 'api\PetugasController@profile')->middleware('auth:api_petugas');
+    Route::get('search', 'api\PetugasController@search')->middleware('auth:api_petugas');
     Route::post('update', 'api\PetugasController@update')->middleware('auth:api_petugas');
     Route::get('berkasBaru', 'api\BerkasController@dataMasuk')->middleware('auth:api_petugas');
     Route::get('dataconfirmedII','api\BerkasController@dataConfirmedII')->middleware('auth:api_petugas');
@@ -44,11 +45,11 @@ Route::group(['prefix' => 'petugas'], function () {
     
 });
 
-
 Route::group(['prefix' => 'dinkes'], function () {
     Route::post('login', 'api\auth\AuthDinkes\LoginController@login');
     Route::get('profile', 'api\DinkesController@profile')->middleware('auth:api_dinkes');
     Route::get('update', 'api\DinkesController@update')->middleware('auth:api_dinkes');
+    Route::get('dataconfirmedII','api\BerkasController@dataConfirmedII')->middleware('auth:api_dinkes');
     Route::get('dataconfirmedI','api\BerkasController@dataConfirmedI')->middleware('auth:api_dinkes');
     Route::post('berkas/{data}', 'api\BerkasController@confirmed_II')->middleware('auth:api_dinkes');
 });
