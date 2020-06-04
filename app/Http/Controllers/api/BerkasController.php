@@ -213,7 +213,7 @@ class BerkasController extends Controller
                 'status'=> true,
                 'message'=>'data tampil',
                 'data'=> BerkasResource::collection($data)
-            ], 200;
+            ], 200);
          }else {
              # code...
              return response()->json([
