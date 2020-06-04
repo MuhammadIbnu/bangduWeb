@@ -208,17 +208,20 @@ class BerkasController extends Controller
      #melihat data confirmed II nilai true
      public function dataConfirmedII(){
          $data = Data::where('confirmed_II','1')->get();
-         return response()->json([
-             'status'=>true,
-             'message'=>'data tampil',
-             'data'=> BerkasResource::collection($data)
-         ], 200, $headers);
-
-         return response()->json([
-            'status'=> false,
-            'message'=>'gagal nyambung',
-            'data'=> (object) []
-        ], 401);
+         if ($data) {
+            return response()->json([
+                'status'=> true,
+                'message'=>'data tampil',
+                'data'=> BerkasResource::collection($data)
+            ], 200;
+         }else {
+             # code...
+             return response()->json([
+                'status'=> false,
+                'message'=>'gagal nyambung',
+                'data'=> (object) []
+            ], 401);
+         }
      }
 
      #melihat data confrimed III nilai true
