@@ -8,7 +8,7 @@ class Survey extends Model
 {
     //
     protected $guarded=[];
-    protected $primaryKey='kd_berkas';
+    
 
     public function waris()
     {
