@@ -15,7 +15,7 @@ class SurveyController extends Controller
         $survey = new Survey();
         $survey->kd_waris = Auth()->user()->id;
         $survey->nilai = $request->nilai;
-        // $survey->save();
+        $survey->save();
         return response()->json([
             'status' => true,
             'message' => 'menilai',
