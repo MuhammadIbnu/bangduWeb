@@ -21,7 +21,6 @@ class SurveyController extends Controller
             'message' => 'menilai',
             'data' => new SurveyResource($survey) 
         ], 200);
-        
     }
 
     public function index(){

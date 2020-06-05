@@ -49,7 +49,4 @@ class Petugas extends Authenticatable
     {
         return $this->belongsTo('App\Data', 'kd_petugas', 'id');
     }
-
-    
-  
 }
