@@ -12,10 +12,14 @@ class SurveyController extends Controller
 {
     public function create(Request $request){
 
-        $survey = new Survey();
-        $survey->kd_waris = Auth()->user()->id;
-        $survey->nilai = $request->nilai;
-        $survey->save();
+        // $survey = new Survey();
+        // $survey->kd_waris = Auth()->user()->id;
+        // $survey->nilai = $request->nilai;
+        // $survey->save();
+        $survey = Survey::create([
+            'kd_waris' => auth()->user()->id,
+            'nilai' => $request->nilai,
+        ]);
         return response()->json([
             'status' => true,
             'message' => 'menilai',
