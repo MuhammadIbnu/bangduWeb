@@ -41,10 +41,10 @@ class BerkasResource extends JsonResource
             'keterangan' => $this->keterangan,
             'keterangan_II' => $this->keterangan_II,
             'keterangan_III' => $this->keterangan_III,
-
-            'confirmed_I'=> ($this->confirmed_I == 1) ? true : false,
-            'confirmed_II'=> ($this->confirmed_II == 1) ? true : false,
-            'confirmed_III'=>($this->confirmed_III == 1) ? true : false
+            'confirmed_I'=> $this->confirmed_I,
+            'confirmed_II'=> $this->confirmed_II,
+            'confirmed_III'=>$this->confirmed_III,
         ];
+        //'confirmed_III'=>($this->confirmed_III == 1) ? true : false
     }
 }

@@ -134,11 +134,7 @@ class BerkasController extends Controller
        
         $data = Data::where('kd_berkas', $data)->first();
         $data->kd_petugas = Auth::user()->id;
-        if($request->confirmed_I == 'true'){
-            $data->confirmed_I = true;    
-         }else{
-            $data->confirmed_I = false;
-         }
+        $data->confirmed_I = $request->confirmed_I;
         $data->keterangan = $request->keterangan;
         $data->update();
             # code...
@@ -152,11 +148,7 @@ class BerkasController extends Controller
      public function confirmed_II(Request $request, $data){
          $data = Data::where('kd_berkas', $data)->first();
          $data->kd_dinkes =  Auth::user()->id;
-         if($request->confirmed_II == 'true'){
-            $data->confirmed_II = true;    
-         }else{
-            $data->confirmed_II = false;
-         }
+         $data->confirmed_II = $request->confirmed_II;
          $data->keterangan_II = $request->keterangan_II;
          $data->update();
 
@@ -170,11 +162,7 @@ class BerkasController extends Controller
      public function confirmed_III(Request $request, $data){
         $data = Data::where('kd_berkas', $data)->first();
         $data->kd_petugas = Auth::user()->id;
-        if($request->confirmed_III == 'true'){
-            $data->confirmed_III = true;    
-         }else{
-            $data->confirmed_III = false;
-         }
+        $data->confirmed_III = $request->confirmed_III;
         $data->keterangan_III = $request->keterangan_III;
         $data->update();
             # code...
@@ -260,3 +248,8 @@ class BerkasController extends Controller
 
 }
 
+// if($request->confirmed_III == 'true'){
+//     $data->confirmed_III = true;    
+//  }else{
+//     $data->confirmed_III = false;
+//  }
