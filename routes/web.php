@@ -20,6 +20,8 @@ Route::match(['get','post'],'/register',function(){
     return redirect('login');
 });
 
+Route::post('report', 'api\BerkasController@pdf');
+
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {

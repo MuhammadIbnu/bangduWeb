@@ -83,6 +83,18 @@ return [
             'hash' => false,
         ],
 
+        'bakuda' => [
+            'driver' => 'session',
+            'provider' => 'bakuda',
+           
+        ],
+
+        'api_bakuda' => [
+            'driver' => 'token',
+            'provider' => 'bakuda',
+            'hash' => false,
+        ],
+
         
     ],
 
@@ -128,7 +140,7 @@ return [
             'model'=> App\Dinkes::class,
         ],
 
-        'Bakuda' => [
+        'bakuda' => [
             'driver'=>'eloquent',
             'model'=> App\Bakuda::class,
         ],

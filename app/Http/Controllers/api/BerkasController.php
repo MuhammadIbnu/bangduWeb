@@ -9,6 +9,7 @@ use App\Data;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Validator;
 use Auth;
+use Storage;
 use Illuminate\Support\Str;
 
 class BerkasController extends Controller
@@ -48,9 +49,12 @@ class BerkasController extends Controller
             $gambar_berkas = $request->file('ktp_meninggal');
             $extention = $gambar_berkas->getClientOriginalExtension();
             $namaFoto = "ktp_meninggal_".date('YmdHis').".".$extention;
-            $upload_path='public/uploads/berkas';
-            $request->file('ktp_meninggal')->move($upload_path,$namaFoto);
-            $data->ktp_meninggal=$namaFoto;
+            // $upload_path='public/uploads/berkas';
+            $file_path = "ktp/" . $namaFoto;
+            Storage::disk('s3')->put($file_path, file_get_contents($gambar_berkas));
+            $data->ktp_meninggal = Storage::disk('s3')->url($file_path, $namaFoto);
+            // $request->file('ktp_meninggal')->move($upload_path,$namaFoto);
+            // $data->ktp_meninggal=$namaFoto;
         }
 
         if ($request->file('kk_meninggal')->isValid()) {
@@ -58,9 +62,9 @@ class BerkasController extends Controller
             $gambar_berkas = $request->file('kk_meninggal');
             $extention = $gambar_berkas->getClientOriginalExtension();
             $namaFoto = "kk_meninggal_".date('YmdHis').".".$extention;
-            $upload_path='public/uploads/berkas';
-            $request->file('kk_meninggal')->move($upload_path,$namaFoto);
-            $data->kk_meninggal=$namaFoto;
+            $file_path = "kk/" . $namaFoto;
+            Storage::disk('s3')->put($file_path, file_get_contents($gambar_berkas));
+            $data->kk_meninggal = Storage::disk('s3')->url($file_path, $namaFoto);
         }
 
         if ($request->file('jamkesmas')->isValid()) {
@@ -68,9 +72,9 @@ class BerkasController extends Controller
             $gambar_berkas = $request->file('jamkesmas');
             $extention = $gambar_berkas->getClientOriginalExtension();
             $namaFoto = "jamkesmas_".date('YmdHis').".".$extention;
-            $upload_path='public/uploads/berkas';
-            $request->file('jamkesmas')->move($upload_path,$namaFoto);
-            $data->jamkesmas=$namaFoto;
+            $file_path ="jamkesmas/" . $namaFoto;
+            Storage::disk('s3')->put($file_path, file_get_contents($gambar_berkas));
+            $data->jamkesmas = Storage::disk('s3')->url($file_path, $namaFoto);
         }
 
         if ($request->file('ktp_waris')->isValid()) {
@@ -78,9 +82,9 @@ class BerkasController extends Controller
             $gambar_berkas = $request->file('ktp_waris');
             $extention = $gambar_berkas->getClientOriginalExtension();
             $namaFoto = "ktp_waris_".date('YmdHis').".".$extention;
-            $upload_path='public/uploads/berkas';
-            $request->file('ktp_waris')->move($upload_path,$namaFoto);
-            $data->ktp_waris=$namaFoto;
+            $file_path = "ktp/" . $namaFoto;
+            Storage::disk('s3')->put($file_path, file_get_contents($gambar_berkas));
+            $data->ktp_waris = Storage::disk('s3')->url($file_path, $namaFoto);
         }
 
         if ($request->file('kk_waris')->isValid()) {
@@ -88,9 +92,9 @@ class BerkasController extends Controller
             $gambar_berkas = $request->file('kk_waris');
             $extention = $gambar_berkas->getClientOriginalExtension();
             $namaFoto = "kk_waris_".date('YmdHis').".".$extention;
-            $upload_path='public/uploads/berkas';
-            $request->file('kk_waris')->move($upload_path,$namaFoto);
-            $data->kk_waris=$namaFoto;
+            $file_path = "kk/" . $namaFoto;
+            Storage::disk('s3')->put($file_path, file_get_contents($gambar_berkas));
+            $data->kk_waris = Storage::disk('s3')->url($file_path, $namaFoto);
         }
 
         if ($request->file('akta_kematian')->isValid()) {
@@ -98,9 +102,9 @@ class BerkasController extends Controller
             $gambar_berkas = $request->file('akta_kematian');
             $extention = $gambar_berkas->getClientOriginalExtension();
             $namaFoto = "akta_kematian_".date('YmdHis').".".$extention;
-            $upload_path='public/uploads/berkas';
-            $request->file('akta_kematian')->move($upload_path,$namaFoto);
-            $data->akta_kematian=$namaFoto;
+            $file_path = "akta/" . $namaFoto;
+            Storage::disk('s3')->put($file_path, file_get_contents($gambar_berkas));
+            $data->akta_kematian = Storage::disk('s3')->url($file_path, $namaFoto);
         }
 
         if ($request->file('pernyataan_ahli_waris')->isValid()) {
@@ -108,9 +112,9 @@ class BerkasController extends Controller
             $gambar_berkas = $request->file('pernyataan_ahli_waris');
             $extention = $gambar_berkas->getClientOriginalExtension();
             $namaFoto = "pernyataan_ahli_waris_".date('YmdHis').".".$extention;
-            $upload_path='public/uploads/berkas';
-            $request->file('pernyataan_ahli_waris')->move($upload_path,$namaFoto);
-            $data->pernyataan_ahli_waris=$namaFoto;
+            $file_path = "surat_pernyataan/" . $namaFoto;
+            Storage::disk('s3')->put($file_path, file_get_contents($gambar_berkas));
+            $data->pernyataan_ahli_waris = Storage::disk('s3')->url($file_path, $namaFoto);
         }
 
         if ($request->file('pakta_waris')->isValid()) {
@@ -118,9 +122,9 @@ class BerkasController extends Controller
             $gambar_berkas = $request->file('pakta_waris');
             $extention = $gambar_berkas->getClientOriginalExtension();
             $namaFoto = "pakta_waris_waris_".date('YmdHis').".".$extention;
-            $upload_path='public/uploads/berkas';
-            $request->file('pakta_waris')->move($upload_path,$namaFoto);
-            $data->pakta_waris=$namaFoto;
+            $file_path = "pakta_waris/" . $namaFoto;
+            Storage::disk('s3')->put($file_path, file_get_contents($gambar_berkas));
+            $data->pakta_waris = Storage::disk('s3')->url($file_path, $namaFoto);
         }
         $data->save();
         return response()->json([
@@ -231,7 +235,7 @@ class BerkasController extends Controller
             'status'=>true,
             'message'=>'data tampil',
             'data'=> BerkasResource::collection($data)
-        ], 200, $headers);
+        ], 200);
 
         return response()->json([
            'status'=> false,
@@ -244,6 +248,27 @@ class BerkasController extends Controller
     public function search(Request $request){
         $search = $request->get('keyword');
         $data = Data::where('created_at');
+    }
+
+
+    public function filter(Request $request)
+    {
+        $date = date_create($request->filter);
+        $filter = Data::whereMonth('updated_at', date_format($date, 'm'))
+            ->whereYear('updated_at', date_format($date, 'Y'))->where('confirmed_III', true)->get();
+        return response()->json([
+            'status' => true,
+            'message'=>'pencarian berhasil',
+            'data' => $filter
+        ]);
+    }
+
+    public function pdf(Request $request){
+        $date = date_create($request->filter);
+        $filter = Data::whereMonth('updated_at', date_format($date, 'm'))
+        ->whereYear('updated_at', date_format($date, 'Y'))->where('confirmed_III', true)->get();
+        $pdf =PDF::loadview('report_bakuda.data_pdf',compact('filter'));
+        return $pdf->download('report_bakuda.data_pdf');
     }
 
 }

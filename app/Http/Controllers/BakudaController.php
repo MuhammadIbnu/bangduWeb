@@ -51,13 +51,12 @@ class BakudaController extends Controller
         $this->validate($request,[
             'username'=>'required|max:100|unique:bakuda',
             'nama'=>'required|max:255',
-            'password'=>'required|min:6|max:50',
             'api_token'=>'max|80'
         ]);
             $petugas = new Bakuda();
             $petugas->username = $request->username;
             $petugas->nama = $request->nama;
-            $petugas->password = \Hash::make($request->password);
+            $petugas->password = \Hash::make($request->username);
             $petugas->api_token = Str::random(80);
             $petugas->save();
         

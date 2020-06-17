@@ -14,6 +14,10 @@ class BakudaResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'username'=>$this->username,
+            'nama'=>$this->nama, 
+            'api_token'=>$this->api_token 
+        ];
     }
 }

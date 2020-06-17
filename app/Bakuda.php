@@ -3,13 +3,18 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
-class Bakuda extends Model
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+class Bakuda extends Authenticatable
 {
     //
-    public $incrementing = false;
+    use Notifiable;
+  
 
-    protected $table= 'bakuda';
+    protected $guard ='bakuda';
+     
+    protected $table = 'bakuda';
     protected $primaryKey = 'id';
     protected $fillable = [
         'id',
@@ -18,5 +23,4 @@ class Bakuda extends Model
         'password',
         'api_token'
     ];
-    protected $keytype = 'string';
 }

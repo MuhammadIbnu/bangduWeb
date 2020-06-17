@@ -30,9 +30,10 @@
   <link rel="stylesheet" href="{{asset('adminlte/bower-components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
   <!-- jQuery 3 -->
   <script src="{{asset('adminlte/bower_components/bower-components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
-<script src="{{asset('adminlte/bower_components/jquery/dist/jquery.min.js')}}"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="{{asset('adminlte/bower_components/jquery-ui/jquery-ui.min.js')}}"></script>
+  
+  <script src="{{asset('adminlte/bower_components/jquery/dist/jquery.min.js')}}" type="text/javascript"></script>
+  <!-- jQuery UI 1.11.4 -->
+  <script src="{{asset('adminlte/bower_components/jquery-ui/jquery-ui.min.js')}}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button);
@@ -74,6 +75,9 @@
 <script src="{{asset('adminlte/dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('adminlte/dist/js/demo.js')}}"></script>
+
+@yield('script')
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
