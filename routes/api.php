@@ -59,5 +59,6 @@ Route::group(['prefix' => 'bakuda'], function () {
     Route::post('login', 'api\auth\AuthBakuda\LoginController@login');  
     Route::post('filter', 'api\BerkasController@filter')->middleware('auth:api_bakuda');
     Route::get('datavalid','api\BerkasController@dataConfirmedIII')->middleware('auth:api_bakuda');
+    Route::POST('report','api\BerkasController@pdf')->middleware('auth:api_bakuda');
     
 });

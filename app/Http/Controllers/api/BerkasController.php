@@ -11,6 +11,8 @@ use Validator;
 use Auth;
 use Storage;
 use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ReportExport;
 
 class BerkasController extends Controller
 {
@@ -259,16 +261,23 @@ class BerkasController extends Controller
         return response()->json([
             'status' => true,
             'message'=>'pencarian berhasil',
-            'data' => $filter
+            'data' => BerkasResource::collection($filter)
         ]);
     }
 
     public function pdf(Request $request){
         $date = date_create($request->filter);
-        $filter = Data::whereMonth('updated_at', date_format($date, 'm'))
-        ->whereYear('updated_at', date_format($date, 'Y'))->where('confirmed_III', true)->get();
-        $pdf =PDF::loadview('report_bakuda.data_pdf',compact('filter'));
-        return $pdf->download('report_bakuda.data_pdf');
+        $filename = date_format(now(), 'ymd-His') . ".xlsx";
+        $filepath = "download/" . $filename;
+        Excel::store(new ReportExport($date), $filepath,'s3', \Maatwebsite\Excel\Excel::XLSX);
+        $excel = Storage::disk('s3')->url($filepath, $filename);
+        return response()->json([
+            'status' => true,
+            'message' => "Ok",
+            'data' => [
+                'url' => $excel
+            ]
+        ]);
     }
 
 }
