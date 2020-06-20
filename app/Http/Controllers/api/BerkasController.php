@@ -257,7 +257,7 @@ class BerkasController extends Controller
     {
         $date = date_create($request->filter);
         $filter = Data::whereMonth('updated_at', date_format($date, 'm'))
-            ->whereYear('updated_at', date_format($date, 'Y'))->where('confirmed_III', true)->get();
+            ->whereYear('updated_at', date_format($date, 'Y'))->where('confirmed_III', true)->where('confirmed_I', true)->where('confirmed_II', true)->get();
         return response()->json([
             'status' => true,
             'message'=>'pencarian berhasil',
