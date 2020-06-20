@@ -182,7 +182,7 @@ class BerkasController extends Controller
      #melihat data baru
 
      public function dataMasuk(){
-        $data = Data::where('confirmed_I')->get();
+        $data = Data::where('confirmed_I')->where('confirmed_II')->where('confirmed_III')->get();
         return response()->json([
             'status'=>true,
             'message'=> 'data masuk',
@@ -197,7 +197,7 @@ class BerkasController extends Controller
      }
      #melihat data confirmed I nilai true
      public function dataConfirmedI(){
-        $data = Data::where('confirmed_I','1')->get();
+        $data = Data::where('confirmed_I','1')->where('confirmed_II')->where('confirmed_III')->get();
         return response()->json([
             'status'=>true,
             'message'=> 'data tampil',
@@ -213,7 +213,7 @@ class BerkasController extends Controller
 
      #melihat data confirmed II nilai true
      public function dataConfirmedII(){
-         $data = Data::where('confirmed_II','1')->get();
+         $data = Data::where('confirmed_II','1')->where('confirmed_III')->where('confirmed_I','1')->get();
          if ($data) {
             return response()->json([
                 'status'=> true,
@@ -232,7 +232,7 @@ class BerkasController extends Controller
 
      #melihat data confrimed III nilai true
      public function dataConfirmedIII(){
-        $data = Data::where('confirmed_III','1')->get();
+        $data = Data::where('confirmed_III','1')->where('confirmed_I','1')->where('confirmed_II','1')->get();
         return response()->json([
             'status'=>true,
             'message'=>'data tampil',
