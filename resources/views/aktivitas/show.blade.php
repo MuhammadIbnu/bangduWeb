@@ -98,7 +98,7 @@
                         <tr>
                             <td>pengecekan Data Masuk</td>
                             <td>:</td>
-                            <td>@if ($aktivitas->confirmed_I === 1)<button type="button" class="btn btn-primary"> Sukses </button> 
+                            <td>@if ($aktivitas->confirmed_I === true)<button type="button" class="btn btn-primary"> Sukses </button> 
                                 @elseif($aktivitas->confirmed_I === null)<button type="button" class="btn btn-warning"> sedang divalidasi </button>
                                 @else <button type="button" class="btn btn-danger"> gagal </button>  
                                 @endif</td>
@@ -106,7 +106,7 @@
                         <tr>
                             <td>pengecekan dinas sosial</td>
                             <td>:</td>
-                            <td>@if ($aktivitas->confirmed_II == 1)<button type="button" class="btn btn-primary"> Sukses </button>
+                            <td>@if ($aktivitas->confirmed_II == true)<button type="button" class="btn btn-primary"> Sukses </button>
                                 @elseif($aktivitas->confirmed_II === null)<button type="button" class="btn btn-warning"> sedang divalidasi </button> 
                                 @else <button type="button" class="btn btn-danger"> Belum </button>  
                                 @endif</td>
@@ -114,7 +114,7 @@
                         <tr>
                             <td>Pengesahan</td>
                             <td>:</td>
-                            <td>@if ($aktivitas->confirmed_III == 1)<button type="button" class="btn btn-primary"> Sukses </button>
+                            <td>@if ($aktivitas->confirmed_III == true)<button type="button" class="btn btn-primary"> Sukses </button>
                                 @elseif($aktivitas->confirmed_III === null)<button type="button" class="btn btn-warning"> sedang divalidasi </button> 
                                 @else <button type="button" class="btn btn-danger"> belum </button>  
                             @endif</td>

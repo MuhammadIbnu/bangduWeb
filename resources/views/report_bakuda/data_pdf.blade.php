@@ -3,7 +3,7 @@
 	<title>Laporan</title>
 </head>
 <body>
-	<style type="text/css">
+	<style type="text/css" media="all">
 		table tr td,
 		table tr th{
 			font-size: 9pt;

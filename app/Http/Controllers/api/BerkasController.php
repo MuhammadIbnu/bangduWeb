@@ -13,9 +13,26 @@ use Storage;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ReportExport;
+use PDF;
 
 class BerkasController extends Controller
 {
+
+    public function cetak_pdf(Request $request)
+    {
+        $date = date_create($request->filter);
+        $filter = Data::whereMonth('updated_at', date_format($date, 'm'))
+            ->whereYear('updated_at', date_format($date, 'Y'))
+            ->where('confirmed_III', true)->where('confirmed_I', true)
+            ->where('confirmed_II', true)->get();
+        $pdf = PDF::loadView('report_bakuda.data_pdf', compact(['filter']));
+        $filename = 'document.pdf';
+        $filepath = 'download/' . $filename;
+        Storage::disk('s3')->put($filepath, $pdf->output());
+        $url = Storage::disk('s3')->url($filepath, $filename);
+        return response()->json($url);
+    }
+
     public function index(){
         $data = Data::get();
         return BerkasResource::collection($data);

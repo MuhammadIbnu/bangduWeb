@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('semua_berkas','api\BerkasController@index');
 Route::post('aktivasi','api\WarisController@aktivasi');
 Route::post('berkas','api\BerkasController@berkas')->middleware('auth:api_waris');
+Route::post('pdf','api\BerkasController@cetak_pdf');
 
 
 

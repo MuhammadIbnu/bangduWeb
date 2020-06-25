@@ -36,7 +36,7 @@
                                 <th>Nama pengaju</th>
                                 <th>Tanggal pengajuan</th>
                                 <th>Status berkas</th>
-                                {{-- <th>Petugas</th> --}}
+                                <th>Petugas</th>
                                 <th width="30%">action</th>
                             </tr>
                         </thead>
