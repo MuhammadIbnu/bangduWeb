@@ -15,6 +15,10 @@ use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ReportExport;
 use PDF;
+use LaravelFCM\Message\OptionsBuilder;
+use LaravelFCM\Message\PayloadDataBuilder;
+use LaravelFCM\Message\PayloadNotificationBuilder;
+use FCM;
 
 class BerkasController extends Controller
 {
@@ -163,22 +167,19 @@ class BerkasController extends Controller
         $data->update();
 
         $optionBuilder = new OptionsBuilder();
-$optionBuilder->setTimeToLive(60*20);
+        $optionBuilder->setTimeToLive(60*20);
+        
+        $notificationBuilder = new PayloadNotificationBuilder('my title');
+        $notificationBuilder->setBody('Hello world')
+                    ->setSound('default');
+        $dataBuilder = new PayloadDataBuilder();
+        $dataBuilder->addData(['a_data' => 'my_data']);
 
-$notificationBuilder = new PayloadNotificationBuilder('my title');
-$notificationBuilder->setBody('Hello world')
-				    ->setSound('default');
-
-$dataBuilder = new PayloadDataBuilder();
-$dataBuilder->addData(['a_data' => 'my_data']);
-
-$option = $optionBuilder->build();
-$notification = $notificationBuilder->build();
-$data = $dataBuilder->build();
-
-$token = "a_registration_from_your_database";
-
-$downstreamResponse = FCM::sendTo($token, $option, $notification, $data);
+        $option = $optionBuilder->build();
+        $notification = $notificationBuilder->build();
+        $_data = $dataBuilder->build();
+        $token = $data->waris->fcm_token;
+        $downstreamResponse = FCM::sendTo($token, $option, $notification, $_data);
             # code...
             return response()->json([
                 'status' => true,
