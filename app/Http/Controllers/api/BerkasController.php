@@ -161,6 +161,24 @@ class BerkasController extends Controller
         $data->confirmed_I = $request->confirmed_I;
         $data->keterangan = $request->keterangan;
         $data->update();
+
+        $optionBuilder = new OptionsBuilder();
+$optionBuilder->setTimeToLive(60*20);
+
+$notificationBuilder = new PayloadNotificationBuilder('my title');
+$notificationBuilder->setBody('Hello world')
+				    ->setSound('default');
+
+$dataBuilder = new PayloadDataBuilder();
+$dataBuilder->addData(['a_data' => 'my_data']);
+
+$option = $optionBuilder->build();
+$notification = $notificationBuilder->build();
+$data = $dataBuilder->build();
+
+$token = "a_registration_from_your_database";
+
+$downstreamResponse = FCM::sendTo($token, $option, $notification, $data);
             # code...
             return response()->json([
                 'status' => true,

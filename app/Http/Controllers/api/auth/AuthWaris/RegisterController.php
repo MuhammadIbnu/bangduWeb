@@ -56,6 +56,7 @@ class RegisterController extends Controller
         $user->rw = $request->rw;
         $user->password = Hash::make($request->kk);
         $user->api_token = Hash::make($request->nik);
+        $user->fcm_token = $request->fcm_token;
         $user->save();
 
         return response()->json([
