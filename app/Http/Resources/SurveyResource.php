@@ -15,11 +15,11 @@ class SurveyResource extends JsonResource
     public function toArray($request)
     {
         return[
-            'responder' =>[
-                'nik' => $this->waris->nik,
-                'kk' => $this->waris->kk,
-                'nama' => $this->waris->nama
-            ],
+            // 'responder' =>[
+            //     'nik' => $this->waris->nik,
+            //     'kk' => $this->waris->kk,
+            //     'nama' => $this->waris->nama
+            // ],
             'nilai'=> $this->nilai
         ];
     }

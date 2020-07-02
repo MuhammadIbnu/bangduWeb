@@ -25,12 +25,19 @@ class SurveyController extends Controller
     }
 
     public function index(){
-        $data = Survey::get();
+        // $data = Survey::count('nilai');
+        $surveys = Survey::all()->groupBy('nilai');
+        $data = (array) null;
+        foreach ($surveys as $key => $item) {
+            $data[$key] = $item->count();
+        }
+        
+        
         // return 
         return response()->json([
             'status'=>true,
             'message'=>'nilai',
-            'data'=> SurveyResource::collection($data)
+            'data'=> $data
         ], 200);
     }
 }

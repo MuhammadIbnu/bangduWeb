@@ -30,8 +30,19 @@ class HomeController extends Controller
         $data = Data::count();
         $petugas = Petugas::count();
         $dinkes = Dinkes::count();
+        $kecamatan = [];
+        $kelurahan = [];
+        $jumlah_pengajuan=[];
+
+        $data_pengajuan = Waris::all();
+        foreach($data_pengajuan as $row){
+            $kecamatan[]= $row->kec;
+            $kelurahan[]= $row->kel;
+            $jumlah = Data::where('kd_waris',$row->id)->count('confirmed_III','1');
+            $jumlah_pengajuan[] =$jumlah;
+        }
         $data_masuk = Data::orderBy('created_at','DESC')->paginate(5);
         $aktivasi_baru = Waris::orderBy('created_at','DESC')->paginate(5);
-        return view('home',compact('waris','data','petugas','dinkes','data_masuk','aktivasi_baru'));
+        return view('home',compact('waris','data','petugas','dinkes','data_masuk','aktivasi_baru','kecamatan','jumlah_pengajuan'));
     }
 }

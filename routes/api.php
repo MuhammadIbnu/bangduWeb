@@ -44,7 +44,7 @@ Route::group(['prefix' => 'petugas'], function () {
     Route::get('dataConfirmedIII','api\BerkasController@dataConfirmedIII')->middleware('auth:api_petugas');
     Route::post('berkas/{data}', 'api\BerkasController@confirmed_I')->middleware('auth:api_petugas');
     Route::post('acc/{data}', 'api\BerkasController@confirmed_III')->middleware('auth:api_petugas');
-    Route::get('listsurvey', 'api\SurveyController@index')->middleware('auth:api_petugas');
+    Route::get('listsurvey', 'api\SurveyController@index');
 });
 
 Route::group(['prefix' => 'dinkes'], function () {

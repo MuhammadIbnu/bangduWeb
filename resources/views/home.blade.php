@@ -3,6 +3,8 @@
     Dashboard    
 @endsection
 @section('content')
+<link rel="stylesheet" href="{{asset('chartjs/chart.min.css')}}">
+<script src="{{ asset('chartjs/chart.min.js')}}"></script>
 <div class="row">
     <div class="col-md-12">
         <div class="box">
@@ -13,7 +15,6 @@
                     <div class="col-md-3 col-sm-6 col-xs-12">
                       <div class="info-box">
                         <span class="info-box-icon bg-aqua"><i class="ion ion-ios-people-outline"></i></span>
-                  
                         <div class="info-box-content">
                           <span class="info-box-text">Aktivasi User</span>
                         <span class="info-box-number">{{$waris}}</span>
@@ -36,14 +37,12 @@
                       <!-- /.info-box -->
                     </div>
                     <!-- /.col -->
-                  
                     <!-- fix for small devices only -->
                     <div class="clearfix visible-sm-block"></div>
                   
                     <div class="col-md-3 col-sm-6 col-xs-12">
                       <div class="info-box">
                         <span class="info-box-icon bg-green"><i class="ion ion-ios-person-outline"></i></span>
-                  
                         <div class="info-box-content">
                           <span class="info-box-text">Petugas Disdukcapil</span>
                         <span class="info-box-number">{{$petugas}}</span>
@@ -65,7 +64,6 @@
                       </div>
                       <!-- /.info-box -->
                     </div>
-                    
                     <!-- /.col -->
                   </div>
             </div>
@@ -73,6 +71,18 @@
     </div>
 </div>
 
+<div class="row">
+  <div class="col-md-12">
+    <div class="box">
+      <div class="box-header with-border">
+             <h3>Grafik Kecamatan</h3>         
+      </div>
+      <div class="box-body">
+        <canvas id="myChart"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="row">
   <div class="col-md-6">
     <div class="box">
@@ -133,4 +143,56 @@
   </div>
 </div>
     
+
+<script>
+  var ctx = document.getElementById("myChart").getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: @php echo json_encode($kecamatan); @endphp,
+      datasets: [{
+        label: 'Grafik pengajuan',
+        data: @php echo json_encode($jumlah_pengajuan); @endphp,
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255,99,132,1)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero:true
+          }
+        }]
+      }
+    }
+  });
+</script>
+
+{{-- <script>
+  var ctx = document.getElementById("myChartII").getContext('2d');
+  var myChartII = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: @php echo json_encode($kelurahan); @endphp,
+      datasets: [{
+        label: 'Grafik Penganjuan',
+        data: @php echo json_encode($jumlah_pengajuan); @endphp,
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255,99,132,1)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero:true
+          }
+        }]
+      }
+    }
+  });
+</script> --}}
 @endsection
