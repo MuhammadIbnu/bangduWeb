@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\BerkasResource;
 use App\Data;
+use App\Waris;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Validator;
 use Auth;
@@ -297,10 +298,25 @@ class BerkasController extends Controller
         ]);
     }
 
-}
+    public function grafik(){
 
-// if($request->confirmed_III == 'true'){
-//     $data->confirmed_III = true;    
-//  }else{
-//     $data->confirmed_III = false;
-//  }
+
+        $data = Data::all()->groupBy(function($query){
+            return $query->waris->kec;
+        });
+
+        $data_per_kecamatan = (array)[];
+
+        foreach($data as $key => $item) {
+            $data_per_kecamatan[$key] = $item->count();
+        }
+
+        return response()->json([
+            'status'=>true,
+            'message'=>'nilai',
+            'data'=> $data_per_kecamatan
+        ], 200);
+        
+    }
+
+}

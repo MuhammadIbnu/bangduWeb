@@ -33,6 +33,7 @@ class CreateWarisTable extends Migration
             $table->string('password');
             $table->string('no_hp')->nullable();
             $table->string('api_token',80)->unique()->nullable()->default(null);
+            $table->string('fcm_token')->nullable();
             $table->timestamps();
         });
     }
