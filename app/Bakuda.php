@@ -23,4 +23,9 @@ class Bakuda extends Authenticatable
         'password',
         'api_token'
     ];
+
+    public function data()
+    {
+        return $this->belongsTo('App\Data', 'kd_bakuda', 'id');
+    }
 }

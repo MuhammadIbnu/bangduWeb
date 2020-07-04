@@ -169,8 +169,8 @@ class BerkasController extends Controller
         $optionBuilder = new OptionsBuilder();
         $optionBuilder->setTimeToLive(60*20);
         
-        $notificationBuilder = new PayloadNotificationBuilder('my title');
-        $notificationBuilder->setBody('Hello world')
+        $notificationBuilder = new PayloadNotificationBuilder('Bangdu #Disdukcapil');
+        $notificationBuilder->setBody('ayo lihat berkas kamu apakah diterima?')
                     ->setSound('default');
         $dataBuilder = new PayloadDataBuilder();
         $dataBuilder->addData(['a_data' => 'my_data']);
@@ -194,6 +194,20 @@ class BerkasController extends Controller
          $data->confirmed_II = $request->confirmed_II;
          $data->keterangan_II = $request->keterangan_II;
          $data->update();
+         $optionBuilder = new OptionsBuilder();
+         $optionBuilder->setTimeToLive(60*20);
+         
+         $notificationBuilder = new PayloadNotificationBuilder('Bangdu #Dinkes');
+         $notificationBuilder->setBody('ayo lihat berkas kamu apakah diterima?')
+                     ->setSound('default');
+         $dataBuilder = new PayloadDataBuilder();
+         $dataBuilder->addData(['a_data' => 'my_data']);
+ 
+         $option = $optionBuilder->build();
+         $notification = $notificationBuilder->build();
+         $_data = $dataBuilder->build();
+         $token = $data->waris->fcm_token;
+         $downstreamResponse = FCM::sendTo($token, $option, $notification, $_data);
 
          return response()->json([
              'status'=>true,
@@ -208,6 +222,22 @@ class BerkasController extends Controller
         $data->confirmed_III = $request->confirmed_III;
         $data->keterangan_III = $request->keterangan_III;
         $data->update();
+
+        $optionBuilder = new OptionsBuilder();
+        $optionBuilder->setTimeToLive(60*20);
+        
+        $notificationBuilder = new PayloadNotificationBuilder('Bangdu #Disdukcapil');
+        $notificationBuilder->setBody('ayo lihat berkas kamu apakah diterima?')
+                    ->setSound('default');
+        $dataBuilder = new PayloadDataBuilder();
+        $dataBuilder->addData(['a_data' => 'my_data']);
+
+        $option = $optionBuilder->build();
+        $notification = $notificationBuilder->build();
+        $_data = $dataBuilder->build();
+        $token = $data->waris->fcm_token;
+        $downstreamResponse = FCM::sendTo($token, $option, $notification, $_data);
+
             # code...
             return response()->json([
                 'status' => true,
@@ -216,6 +246,36 @@ class BerkasController extends Controller
             ],200);        
      }
 
+
+     public function confirmed_IV(Request $request, $data){
+        $data = Data::where('kd_berkas', $data)->first();
+        $data->kd_bakuda = Auth::user()->id;
+        $data->confirmed_IV = $request->confirmed_IV;
+        $data->keterangan_IV = $request->keterangan_IV;
+        $data->update();
+
+        $optionBuilder = new OptionsBuilder();
+        $optionBuilder->setTimeToLive(60*20);
+        
+        $notificationBuilder = new PayloadNotificationBuilder('Bangdu #Bakuda');
+        $notificationBuilder->setBody('ayo lihat ada kabar baik untuk kamu!')
+                    ->setSound('default');
+        $dataBuilder = new PayloadDataBuilder();
+        $dataBuilder->addData(['a_data' => 'my_data']);
+
+        $option = $optionBuilder->build();
+        $notification = $notificationBuilder->build();
+        $_data = $dataBuilder->build();
+        $token = $data->waris->fcm_token;
+        $downstreamResponse = FCM::sendTo($token, $option, $notification, $_data);
+
+            # code...
+            return response()->json([
+                'status' => true,
+                'message' => 'acc',
+                'data' => new BerkasResource($data)
+            ],200);        
+     }
      #melihat data baru
 
      public function dataMasuk(){
@@ -270,6 +330,21 @@ class BerkasController extends Controller
      #melihat data confrimed III nilai true
      public function dataConfirmedIII(){
         $data = Data::where('confirmed_III','1')->where('confirmed_I','1')->where('confirmed_II','1')->get();
+        return response()->json([
+            'status'=>true,
+            'message'=>'data tampil',
+            'data'=> BerkasResource::collection($data)
+        ], 200);
+
+        return response()->json([
+           'status'=> false,
+           'message'=>'gagal nyambung',
+           'data'=> (object) []
+       ], 401);
+    }
+
+    public function dataConfirmedIV(){
+        $data = Data::where('confirmed_III','1')->where('confirmed_I','1')->where('confirmed_II','1')->where('confirmed_IV','1')->get();
         return response()->json([
             'status'=>true,
             'message'=>'data tampil',

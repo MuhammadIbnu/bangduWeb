@@ -18,6 +18,7 @@ class CreateDataTable extends Migration
             $table->unsignedInteger('kd_petugas')->nullable();
             $table->unsignedInteger('kd_dinkes')->nullable();
             $table->unsignedInteger('kd_waris')->nullable();
+            $table->unsignedInteger('kd_bakuda')->nullable();
             $table->string('ktp_meninggal')->nullable();
             $table->string('kk_meninggal')->nullable();
             $table->string('jamkesmas')->nullable();
@@ -29,12 +30,15 @@ class CreateDataTable extends Migration
             $table->boolean('confirmed_I')->nullable();
             $table->boolean('confirmed_II')->nullable();
             $table->boolean('confirmed_III')->nullable();
+            $table->boolean('confirmed_IV')->nullable();
             $table->text('keterangan')->nullable();
             $table->text('keterangan_II')->nullable();
             $table->text('keterangan_III')->nullable();
+            $table->text('keterangan_IV')->nullable();
             $table->foreign('kd_petugas')->references('id')->on('petugas')->onDelete('cascade');
             $table->foreign('kd_dinkes')->references('id')->on('dinkes')->onDelete('cascade');
             $table->foreign('kd_waris')->references('id')->on('waris')->onDelete('cascade');
+            $table->foreign('kd_bakuda')->references('id')->on('bakuda')->onDelete('cascade');
             $table->timestamps();
         });
     }

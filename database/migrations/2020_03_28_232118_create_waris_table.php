@@ -29,11 +29,11 @@ class CreateWarisTable extends Migration
             $table->string('alamat')->nullable();
             $table->string('rt')->nullable();
             $table->string('rw')->nullable();
-            $table->string('otp')->nullable();
             $table->string('password');
             $table->string('no_hp')->nullable();
             $table->string('api_token',80)->unique()->nullable()->default(null);
             $table->string('fcm_token')->nullable();
+            $table->string('no_rek')->nullable();
             $table->timestamps();
         });
     }

@@ -27,5 +27,10 @@ class Data extends Model
     {
         return $this->belongsTo('App\Dinkes', 'kd_dinkes', 'id');
     }
+
+    public function bakuda()
+    {
+        return $this->belongsTo('App\Bakuda', 'kd_bakuda', 'id');
+    }
     
 }
