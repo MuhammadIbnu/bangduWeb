@@ -295,6 +295,7 @@ class BerkasController extends Controller
      #melihat data confirmed I nilai true
      public function dataConfirmedI(){
         $data = Data::where('confirmed_I','1')->where('confirmed_II')->where('confirmed_III')->get();
+
         return response()->json([
             'status'=>true,
             'message'=> 'data tampil',

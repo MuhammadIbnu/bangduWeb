@@ -35,13 +35,23 @@ class WarisController extends Controller
    public function tracking(){
     $id = Auth::guard('api_waris')->user()->id;
     $data = Data::where('kd_waris', $id)->latest()->first();
+            if ($data) {
+                # code...
+                return response()->json([
+                    'status'=> true,
+                    'message'=>"profile tampil",
+                    'data'=> $data
+                ], 200);
+            }
 
-        return response()->json([
-            'status'=> true,
-            'message'=>"profile tampil",
-            'data'=> $data
-        ], 200);
-   }
+            return response()->json([
+                'status'=> false,
+                'message'=>'gagal nyambung',
+                'data'=> (object) []
+            ], 401);
+                    
+
+            }
 
    public function update(Request $request){
     $user = Auth::user();
