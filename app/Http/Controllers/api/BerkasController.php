@@ -396,7 +396,7 @@ class BerkasController extends Controller
     public function grafik(){
 
 
-        $data = Data::all()->groupBy(function($query){
+        $data = Data::all()->where('confirmed_IV','1')->groupBy(function($query){
             return $query->waris->kec;
         });
 

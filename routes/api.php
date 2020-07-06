@@ -31,6 +31,7 @@ Route::group(['prefix' => 'waris'], function () {
     Route::get('tracking','api\WarisController@tracking' )->middleware('auth:api_waris');
     Route::post('update','api\WarisController@update' )->middleware('auth:api_waris');
     Route::post('survey','api\SurveyController@create')->middleware('auth:api_waris');
+    Route::get('grafik','api\BerkasController@grafik');
 });
 
 
@@ -45,7 +46,6 @@ Route::group(['prefix' => 'petugas'], function () {
     Route::post('berkas/{data}', 'api\BerkasController@confirmed_I')->middleware('auth:api_petugas');
     Route::post('acc/{data}', 'api\BerkasController@confirmed_III')->middleware('auth:api_petugas');
     Route::get('listsurvey', 'api\SurveyController@index');
-    Route::get('grafik','api\BerkasController@grafik');
 });
 
 Route::group(['prefix' => 'dinkes'], function () {
