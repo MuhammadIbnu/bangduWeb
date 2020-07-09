@@ -54,6 +54,7 @@ class BerkasController extends Controller
             'akta_kematian'=>'required|image|mimes:jpeg,jpg,png|max:2048',
             'pernyataan_ahli_waris'=>'required|image|mimes:jpeg,jpg,png|max:2048',
             'pakta_waris'=>'required|image|mimes:jpeg,jpg,png|max:2048',
+            'buku_tabungan'=>'required|image|mimes:jpeg,jpg,png|max:2048',
         ];
 
         $validasi = Validator::make($request->all(), $rules);
@@ -149,6 +150,16 @@ class BerkasController extends Controller
             $file_path = "pakta_waris/" . $namaFoto;
             Storage::disk('s3')->put($file_path, file_get_contents($gambar_berkas));
             $data->pakta_waris = Storage::disk('s3')->url($file_path, $namaFoto);
+        }
+
+        if ($request->file('buku_tabungan')->isValid()) {
+            # code...
+            $gambar_berkas = $request->file('buku_tabungan');
+            $extention = $gambar_berkas->getClientOriginalExtension();
+            $namaFoto = "buku_tabungan".date('YmdHis').".".$extention;
+            $file_path = "buku_tabungan/" . $namaFoto;
+            Storage::disk('s3')->put($file_path, file_get_contents($gambar_berkas));
+            $data->buku_tabungan = Storage::disk('s3')->url($file_path, $namaFoto);
         }
         $data->save();
         return response()->json([

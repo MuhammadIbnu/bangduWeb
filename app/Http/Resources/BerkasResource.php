@@ -38,6 +38,7 @@ class BerkasResource extends JsonResource
             'akta_kematian' => $this->akta_kematian,
             'pakta_waris' => $this->pakta_waris,
             'pernyataan_waris'=>$this->pernyataan_ahli_waris,
+            'buku_tabungan'=>$this->buku_tabungan,
             'keterangan' => $this->keterangan,
             'keterangan_II' => $this->keterangan_II,
             'keterangan_III' => $this->keterangan_III,

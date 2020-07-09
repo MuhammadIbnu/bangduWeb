@@ -27,6 +27,7 @@ class CreateDataTable extends Migration
             $table->string('akta_kematian')->nullable();
             $table->string('pernyataan_ahli_waris')->nullable();
             $table->string('pakta_waris')->nullable();
+            $table->string('buku_tabungan')->nullable();
             $table->boolean('confirmed_I')->nullable();
             $table->boolean('confirmed_II')->nullable();
             $table->boolean('confirmed_III')->nullable();
