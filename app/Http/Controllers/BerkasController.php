@@ -34,7 +34,7 @@ class BerkasController extends Controller
         $start = Carbon::parse($request->start_date)->format('Y-m-d');
         $end = Carbon::parse($request->end_date)->format('Y-m-d');
         $report_data=Data::whereBetween('updated_at',[$start, $end])->orderBy('updated_at','DESC')->where('confirmed_III','1')->paginate(20);
-        $pdf =PDF::loadview('report_data.data_pdf',compact('report_data'));
+        $pdf =PDF::loadview('report_data.data',compact('report_data'));
         return $pdf->stream();
     }
 
