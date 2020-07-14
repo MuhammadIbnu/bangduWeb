@@ -33,7 +33,7 @@ class BerkasController extends Controller
     public function cetak_pdf(Request $request){
         $start = Carbon::parse($request->start_date)->format('Y-m-d');
         $end = Carbon::parse($request->end_date)->format('Y-m-d');
-        $report_data=Data::whereBetween('updated_at',[$start, $end])->orderBy('updated_at','DESC')->where('confirmed_III','1')->paginate(20);
+        $report_data=Data::whereBetween('updated_at',[$start, $end])->orderBy('updated_at','DESC')->where('confirmed_IV','1')->paginate(20);
         $pdf =PDF::loadview('report_data.data',compact('report_data'));
         return $pdf->stream();
     }
