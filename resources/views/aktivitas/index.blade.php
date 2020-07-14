@@ -47,7 +47,7 @@
                                     <td>{{$row->waris->nama}}</td>
                                     <td>{{$row->created_at->format('d/m/Y')}}</td>
                                     <td>@if ($row->confirmed_I === true)
-                                        <button type="button" class="label label-success">sukses</button> 
+                                        <button type="button" class="label label-success">Diterima</button> 
                                         @elseif($row->confirmed_I === null)
                                         <button type="button" class="btn btn-warning">Sedang dievaluasi</button>  
                                         @else

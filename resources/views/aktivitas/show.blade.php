@@ -119,6 +119,14 @@
                                 @else <button type="button" class="btn btn-danger"> belum </button>  
                             @endif</td>
                         </tr>
+                        <tr>
+                            <td>Pengesahan</td>
+                            <td>:</td>
+                            <td>@if ($aktivitas->confirmed_IV == true)<button type="button" class="btn btn-primary"> Dana Cair </button>
+                                @elseif($aktivitas->confirmed_IV === null)<button type="button" class="btn btn-warning"> sedang divalidasi </button> 
+                                @else <button type="button" class="btn btn-danger"> belum </button>  
+                            @endif</td>
+                        </tr>
                    </table>
                 </div>
             </div>
