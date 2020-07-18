@@ -33,7 +33,6 @@
             <th>nomor kk</th>
             <th>nama</th>
             <th>Tanggal pengesahan data</th>
-            <th>Pengesahan data</th>
             <th>Petugas</th>
         </tr>
     </thead>
@@ -45,8 +44,6 @@
             <td>{{$row->waris->kk}}</td>
             <td>{{$row->waris->nama}}</td>
             <td>{{$row->updated_at->format('d/m/Y')}}</td>
-            <td>@if ($row->confirmed_III == 1)<i>sukses</if>   
-                @endif</td>
             <td>{{$row->petugas->nama}}</td>
         </tr>
         @endforeach

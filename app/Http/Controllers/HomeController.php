@@ -38,7 +38,7 @@ class HomeController extends Controller
         foreach($data_pengajuan as $row){
             $kecamatan[]= $row->kec;
             $kelurahan[]= $row->kel;
-            $jumlah = Data::where('kd_waris',$row->id)->count('confirmed_III','1');
+            $jumlah = Data::where('kd_waris',$row->id)->count('confirmed_IV','true');
             $jumlah_pengajuan[] =$jumlah;
         }
         $data_masuk = Data::orderBy('created_at','DESC')->paginate(5);
