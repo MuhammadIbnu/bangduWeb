@@ -55,7 +55,9 @@
              <td valign="top">
                  
                      <div align="left">
-                        <span style="font-size: x-small;">Mengetahui </span><br>
+                        <span style="font-size: x-small;">Tegal</span>
+                     <span style="font-size: x-small;">{{now()->format('d-m-Y')}}</span>
+                        <br>
                             <span style="font-size: x-small;">Kepala Dinas Penduduk dan Pencatatan Sipil Kota Tegal</span>
                     </div>
                 

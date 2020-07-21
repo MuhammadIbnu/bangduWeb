@@ -3,8 +3,8 @@
     Dashboard    
 @endsection
 @section('content')
-<link rel="stylesheet" href="{{asset('chartjs/chart.min.css')}}">
-<script src="{{ asset('chartjs/chart.min.js')}}"></script>
+<link rel="stylesheet" href="{{asset('chartjs/Chart.min.css')}}">
+<script src="{{ asset('chartjs/Chart.min.js')}}"></script>
 <div class="row">
     <div class="col-md-12">
         <div class="box">
@@ -170,29 +170,4 @@
   });
 </script>
 
-{{-- <script>
-  var ctx = document.getElementById("myChartII").getContext('2d');
-  var myChartII = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: @php echo json_encode($kelurahan); @endphp,
-      datasets: [{
-        label: 'Grafik Penganjuan',
-        data: @php echo json_encode($jumlah_pengajuan); @endphp,
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-        borderColor: 'rgba(255,99,132,1)',
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero:true
-          }
-        }]
-      }
-    }
-  });
-</script> --}}
 @endsection

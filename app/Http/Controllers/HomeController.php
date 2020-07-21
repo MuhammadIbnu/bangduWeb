@@ -37,7 +37,6 @@ class HomeController extends Controller
         $data_pengajuan = Waris::all();
         foreach($data_pengajuan as $row){
             $kecamatan[]= $row->kec;
-            $kelurahan[]= $row->kel;
             $jumlah = Data::where('kd_waris',$row->id)->count('confirmed_IV','true');
             $jumlah_pengajuan[] =$jumlah;
         }
