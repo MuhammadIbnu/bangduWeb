@@ -92,6 +92,22 @@
                                                 </a>
                                             </div>
                                         </div>
+
+                                        <div class="col-md-4">
+                                            <div class="thumbnail">
+                                                <a href="{{asset($aktivitas->pernyataan_ahli_waris)}}" target="_blank">
+                                                    <img src="{{asset($aktivitas->pernyataan_ahli_waris)}}" alt="Nature" style="width:100%">
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="thumbnail">
+                                                <a href="{{asset($aktivitas->buku_tabungan)}}" target="_blank">
+                                                    <img src="{{asset($aktivitas->buku_tabungan)}}" alt="Nature" style="width:100%">
+                                                </a>
+                                            </div>
+                                        </div>
                                 </div>
                             </td>
                         </tr>
