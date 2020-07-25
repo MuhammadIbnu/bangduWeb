@@ -52,7 +52,6 @@
                                                 </a>
                                             </div>
                                         </div>
-
                                         <div class="col-md-4">
                                             <div class="thumbnail">
                                                 <a href="{{asset($aktivitas->jamkesmas)}}" target="_blank">
@@ -136,7 +135,7 @@
                             @endif</td>
                         </tr>
                         <tr>
-                            <td>Pengesahan</td>
+                            <td>Pencairan dana</td>
                             <td>:</td>
                             <td>@if ($aktivitas->confirmed_IV == true)<button type="button" class="btn btn-primary"> Dana Cair </button>
                                 @elseif($aktivitas->confirmed_IV === null)<button type="button" class="btn btn-warning"> sedang divalidasi </button> 
