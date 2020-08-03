@@ -19,7 +19,7 @@
                             <div class="form-group">
                                 <label for="username" class="col-sm-2 control-label">UserName</label>
                                 <div class="col-sm-10">
-                                    <input type="text" placeholder="minimal 6 karakter tanpa spasi" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{5,12}$" class="form-control" id="username" name="username" value="{{old('username')}}">
+                                    <input type="text" placeholder="minimal 6 karakter tanpa spasi" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{5,11}$" class="form-control" id="username" name="username" value="{{old('username')}}">
                                 </div>
                             </div>
 
