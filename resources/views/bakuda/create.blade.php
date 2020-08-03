@@ -19,14 +19,14 @@
                             <div class="form-group">
                                 <label for="username" class="col-sm-2 control-label">UserName</label>
                                 <div class="col-sm-10">
-                                    <input placeholder="minimal 6 karakter tanpa spasi" type="text" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{5,12}$" class="form-control" id="username" name="username" value="{{old('username')}}">
+                                    <input placeholder="minimal 6 karakter tanpa spasi" type="text" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{5,11}$" class="form-control" id="username" name="username" value="{{old('username')}}">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="nama" class="col-sm-2 control-label">Nama Petugas</label>
                                 <div class="col-sm-10">
-                                    <input placeholder="Tulis Nama" type="text" class="form-control" id="nama" name="nama" value="{{old('nama')}}">
+                                    <input placeholder="Tulis Nama" type="text" class="form-control" maxlength="50" placeholder="Maksimal karakter adalah 50" id="nama" name="nama" value="{{old('nama')}}">
                                 </div>
                             </div>   
                         </div>

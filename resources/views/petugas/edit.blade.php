@@ -25,7 +25,7 @@
                             <div class="form-group">
                                 <label for="nama_pegawai" class="col-sm-2 control-label">Nama Petugas</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="nama" name="nama" value="{{$petugas->nama}}">
+                                    <input type="text" class="form-control" maxlength="50" placeholder="Maksimal karakter adalah 50" id="nama" name="nama" value="{{$petugas->nama}}">
                                 </div>
                             </div>
                         </div>

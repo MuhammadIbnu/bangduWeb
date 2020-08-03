@@ -19,14 +19,14 @@
                             <div class="form-group">
                                 <label for="username" class="col-sm-2 control-label">Username</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="username" disabled value="{{$bakuda->username}}">
+                                    <input type="text" class="form-control" id="username" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{5,11}$" value="{{$bakuda->username}}">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="nama_pegawai" class="col-sm-2 control-label">Nama Petugas</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="nama" name="nama" value="{{$bakuda->nama}}">
+                                    <input type="text" class="form-control" id="nama" maxlength="50" placeholder="Maksimal karakter adalah 50" name="nama" value="{{$bakuda->nama}}">
                                 </div>
                             </div>
                         </div>
