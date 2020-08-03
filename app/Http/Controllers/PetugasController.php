@@ -103,18 +103,10 @@ class PetugasController extends Controller
 
         $validasi = Validator::make($data,[
             'nama' => 'required|max:255',
-            'password'=>'required|max:255'
         ]);
         if ($validasi->fails()) {
             # code...
             return redirect()->route('petugas.edit')->withErrors($validasi);
-        }
-        if ($request->input('password')) {
-            # code...
-            $data['password']=password_hash($request->input('password'),PASSWORD_DEFAULT);
-        } else {
-            # code...
-            $data=Arr::except($data['password']);
         }
         $petugas->update($data);
         return redirect()->route('petugas.index')->with('status','petugas berhasil di edit');

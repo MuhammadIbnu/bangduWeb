@@ -11,17 +11,21 @@ use Auth;
 class SurveyController extends Controller
 {
     public function create(Request $request){
-
+        $exist = Survey::where('kd_waris', auth()->user()->id)->first();
+        if($exist) {
+            $exist->delete();
+        }
         $survey = new Survey();
         $survey->kd_waris = auth()->user()->id;
         $survey->nilai = $request->nilai;
         $survey->save();
-       
+    
         return response()->json([
             'status' => true,
             'message' => 'menilai',
             'data' => new SurveyResource($survey),
         ], 200);
+    
     }
 
     public function index(){

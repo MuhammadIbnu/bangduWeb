@@ -14,7 +14,7 @@ class adminseeder extends Seeder
         //
         $user = new \App\User;
         $user->username = "admin";
-        $user->name = "ibnu";
+        $user->name = "kepala Disdukcapil";
         $user->email = "administrator@mail.com";
         $user->password = \Hash::make("admin");
         $user->save();

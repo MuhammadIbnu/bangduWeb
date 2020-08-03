@@ -15,9 +15,9 @@ class CreatePetugasTable extends Migration
     {
         Schema::create('petugas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('username');
-            $table->string('nama');
-            $table->string('password');
+            $table->string('username',12);
+            $table->string('nama',50);
+            $table->string('password',60);
             $table->string('api_token',80)->unique()->nullable()->default(null);
             $table->timestamps();
         });

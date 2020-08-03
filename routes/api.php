@@ -51,7 +51,7 @@ Route::group(['prefix' => 'petugas'], function () {
 Route::group(['prefix' => 'dinkes'], function () {
     Route::post('login', 'api\auth\AuthDinkes\LoginController@login');
     Route::get('profile', 'api\DinkesController@profile')->middleware('auth:api_dinkes');
-    Route::get('update', 'api\DinkesController@update')->middleware('auth:api_dinkes');
+    Route::post('update', 'api\DinkesController@update')->middleware('auth:api_dinkes');
     Route::get('dataconfirmedII','api\BerkasController@dataConfirmedII')->middleware('auth:api_dinkes');
     Route::get('dataconfirmedI','api\BerkasController@dataConfirmedI')->middleware('auth:api_dinkes');
     Route::post('berkas/{data}', 'api\BerkasController@confirmed_II')->middleware('auth:api_dinkes');
@@ -61,8 +61,9 @@ Route::group(['prefix' => 'bakuda'], function () {
     Route::post('login', 'api\auth\AuthBakuda\LoginController@login');  
     Route::post('filter', 'api\BerkasController@filter')->middleware('auth:api_bakuda');
     Route::get('datavalid','api\BerkasController@dataConfirmedIII')->middleware('auth:api_bakuda');
+    Route::post('update', 'api\BakudaController@update')->middleware('auth:api_bakuda');
     Route::post('berkas/{data}', 'api\BerkasController@confirmed_IV')->middleware('auth:api_bakuda');
     Route::get('dana_cair','api\BerkasController@dataConfirmedIV')->middleware('auth:api_bakuda');
     Route::POST('report','api\BerkasController@pdf')->middleware('auth:api_bakuda');
-    
+    Route::get('profile', 'api\BerkasController@profile')->middleware('auth:api_bakuda');
 });

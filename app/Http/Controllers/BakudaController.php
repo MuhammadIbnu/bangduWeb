@@ -22,7 +22,7 @@ class BakudaController extends Controller
         $fillterKeyword =$request->get('keyword');
         if ($fillterKeyword) {
             # code...
-            $bakuda = Bakuda::where('nama','LIKE',"%$filterKeyword%")->paginate(5);
+            $bakuda = Bakuda::where('nama','LIKE',"%$fillterKeyword%")->paginate(5);
         }
         return view('bakuda.index',compact('bakuda'));
         

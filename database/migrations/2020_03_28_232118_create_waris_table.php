@@ -15,22 +15,21 @@ class CreateWarisTable extends Migration
     {
         Schema::create('waris', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nik');
-            $table->string('kk');
-            $table->string('nama')->nullable();
-            $table->string('jk')->nullable();
-            $table->string('tmpt_lhr')->nullable();
-            $table->string('tgl_lhr')->nullable();
-            $table->string('nama_ibu')->nullable();
-            $table->string('nama_ayah')->nullable();
-            $table->string('kota')->nullable();
-            $table->string('kec')->nullable();
-            $table->string('kel')->nullable();
-            $table->string('alamat')->nullable();
-            $table->string('rt')->nullable();
-            $table->string('rw')->nullable();
-            $table->string('password');
-            $table->string('no_hp')->nullable();
+            $table->string('nik',16);
+            $table->string('kk',16);
+            $table->string('nama',20)->nullable();
+            $table->string('jk',10)->nullable();
+            $table->string('tmpt_lhr',10)->nullable();
+            $table->string('tgl_lhr',10)->nullable();
+            $table->string('nama_ibu',20)->nullable();
+            $table->string('nama_ayah',20)->nullable();
+            $table->string('kota',15)->nullable();
+            $table->string('kec',20)->nullable();
+            $table->string('kel',20)->nullable();
+            $table->string('alamat',50)->nullable();
+            $table->string('rt',10)->nullable();
+            $table->string('rw',10)->nullable();
+            $table->string('password',60);
             $table->string('api_token',80)->unique()->nullable()->default(null);
             $table->string('fcm_token')->nullable();
             $table->string('no_rek')->nullable();

@@ -29,16 +29,6 @@
                                     <input type="text" class="form-control" id="nama" name="nama" value="{{$dinkes->nama}}">
                                 </div>
                             </div>
-
-                           
-
-                            <div class="form-group">
-                                <label for="password" class="col-sm-2 control-label">Password</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="password" name="password" value="">
-                                </div>
-                            </div>
-
                         </div>
                         <div class="box-footer">
                             <button type="submit" name="tombol" class="btn btn-info pull-right">Update</button>

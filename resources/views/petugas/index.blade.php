@@ -17,7 +17,7 @@
                         <div class="fore-group">
                             <label for="keyword" class="col-sm-2 control-label">Search By name</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="keyword" name="keyword" value="{{Request::get('keyword')}}">
+                                <input type="text" class="form-control" id="keyword" name="keyword"  value="{{Request::get('keyword')}}">
                             </div>
                             <div class="col-sm-6">
                                 <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span></button>
