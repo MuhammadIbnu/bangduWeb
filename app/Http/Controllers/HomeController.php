@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Waris;
 use App\Data;
 use App\Petugas;
-use App\Dinkes;
 class HomeController extends Controller
 {
     /**
@@ -29,7 +28,6 @@ class HomeController extends Controller
         $waris = Waris::count();
         $data = Data::count();
         $petugas = Petugas::count();
-        $dinkes = Dinkes::count();
         $kecamatan = [];
         $kelurahan = [];
         $jumlah_pengajuan=[];
