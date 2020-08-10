@@ -23,10 +23,10 @@ class Data extends Model
         return $this->belongsTo('App\Petugas', 'kd_petugas', 'id');
     }
     
-    public function dinkes()
-    {
-        return $this->belongsTo('App\Dinkes', 'kd_dinkes', 'id');
-    }
+    // public function dinkes()
+    // {
+    //     return $this->belongsTo('App\Dinkes', 'kd_dinkes', 'id');
+    // }
 
     public function bakuda()
     {

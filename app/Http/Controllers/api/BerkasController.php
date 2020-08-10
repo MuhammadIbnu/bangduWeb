@@ -9,6 +9,7 @@ use App\Data;
 use App\Waris;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Validator;
+use Carbon\Carbon;
 use Auth;
 use Storage;
 use Illuminate\Support\Str;
@@ -175,6 +176,17 @@ class BerkasController extends Controller
         $data->kd_petugas = Auth::user()->id;
         $data->confirmed_I = $request->confirmed_I;
         $data->keterangan = $request->keterangan;
+        $data->ket_ktp_meninggal = $request->ket_ktp_meninggal;
+        $data->ket_kk_meninggal = $request->ket_kk_meninggal;
+        $data->ket_jamkesmas = $request->ket_jamkesmas;
+        $data->ket_ktp_waris = $request->ket_ktp_waris;
+        $data->ket_kk_waris = $request->ket_kk_waris;
+        $data->ket_akta_kematiam = $request->ket_akta_kematian;
+        $data->ket_pernyataan_ahli_waris = $request->ket_pernyataan_ahli_waris;
+        $data->ket_pakta_waris = $request->ket_pakta_waris;
+        $data->ket_buku_tabungan = $request->ket_buku_tabungan;
+        $data->date_konfirmasi= Carbon::now($request->date_konfirmasi)->format('Y-m-d');
+
         $data->update();
 
         $optionBuilder = new OptionsBuilder();
@@ -204,6 +216,16 @@ class BerkasController extends Controller
          $data->kd_dinkes =  Auth::user()->id;
          $data->confirmed_II = $request->confirmed_II;
          $data->keterangan_II = $request->keterangan_II;
+         $data->ket_ktp_meninggal = $request->ket_ktp_meninggal;
+         $data->ket_kk_meninggal = $request->ket_kk_meninggal;
+         $data->ket_jamkesmas = $request->ket_jamkesmas;
+         $data->ket_ktp_waris = $request->ket_ktp_waris;
+         $data->ket_kk_waris = $request->ket_kk_waris;
+         $data->ket_akta_kematiam = $request->ket_akta_kematian;
+         $data->ket_pernyataan_ahli_waris = $request->ket_pernyataan_ahli_waris;
+         $data->ket_pakta_waris = $request->ket_pakta_waris;
+         $data->ket_buku_tabungan = $request->ket_buku_tabungan;
+         $data->date_transfer= Carbon::now($request->date_transfer)->format('Y-m-d');
          $data->update();
          $optionBuilder = new OptionsBuilder();
          $optionBuilder->setTimeToLive(60*20);
@@ -227,66 +249,66 @@ class BerkasController extends Controller
          ], 200);
      }
 
-     public function confirmed_III(Request $request, $data){
-        $data = Data::where('kd_berkas', $data)->first();
-        $data->kd_petugas = Auth::user()->id;
-        $data->confirmed_III = $request->confirmed_III;
-        $data->keterangan_III = $request->keterangan_III;
-        $data->update();
+    //  public function confirmed_III(Request $request, $data){
+    //     $data = Data::where('kd_berkas', $data)->first();
+    //     $data->kd_petugas = Auth::user()->id;
+    //     $data->confirmed_III = $request->confirmed_III;
+    //     $data->keterangan_III = $request->keterangan_III;
+    //     $data->update();
 
-        $optionBuilder = new OptionsBuilder();
-        $optionBuilder->setTimeToLive(60*20);
+    //     $optionBuilder = new OptionsBuilder();
+    //     $optionBuilder->setTimeToLive(60*20);
         
-        $notificationBuilder = new PayloadNotificationBuilder('Bangdu #Disdukcapil');
-        $notificationBuilder->setBody('ayo lihat berkas kamu apakah diterima?')
-                    ->setSound('default');
-        $dataBuilder = new PayloadDataBuilder();
-        $dataBuilder->addData(['a_data' => 'my_data']);
+    //     $notificationBuilder = new PayloadNotificationBuilder('Bangdu #Disdukcapil');
+    //     $notificationBuilder->setBody('ayo lihat berkas kamu apakah diterima?')
+    //                 ->setSound('default');
+    //     $dataBuilder = new PayloadDataBuilder();
+    //     $dataBuilder->addData(['a_data' => 'my_data']);
 
-        $option = $optionBuilder->build();
-        $notification = $notificationBuilder->build();
-        $_data = $dataBuilder->build();
-        $token = $data->waris->fcm_token;
-        $downstreamResponse = FCM::sendTo($token, $option, $notification, $_data);
+    //     $option = $optionBuilder->build();
+    //     $notification = $notificationBuilder->build();
+    //     $_data = $dataBuilder->build();
+    //     $token = $data->waris->fcm_token;
+    //     $downstreamResponse = FCM::sendTo($token, $option, $notification, $_data);
 
-            # code...
-            return response()->json([
-                'status' => true,
-                'message' => 'acc',
-                'data' => new BerkasResource($data)
-            ],200);        
-     }
+    //         # code...
+    //         return response()->json([
+    //             'status' => true,
+    //             'message' => 'acc',
+    //             'data' => new BerkasResource($data)
+    //         ],200);        
+    //  }
 
 
-     public function confirmed_IV(Request $request, $data){
-        $data = Data::where('kd_berkas', $data)->first();
-        $data->kd_bakuda = Auth::user()->id;
-        $data->confirmed_IV = $request->confirmed_IV;
-        $data->keterangan_IV = $request->keterangan_IV;
-        $data->update();
+    //  public function confirmed_IV(Request $request, $data){
+    //     $data = Data::where('kd_berkas', $data)->first();
+    //     $data->kd_bakuda = Auth::user()->id;
+    //     $data->confirmed_IV = $request->confirmed_IV;
+    //     $data->keterangan_IV = $request->keterangan_IV;
+    //     $data->update();
 
-        $optionBuilder = new OptionsBuilder();
-        $optionBuilder->setTimeToLive(60*20);
+    //     $optionBuilder = new OptionsBuilder();
+    //     $optionBuilder->setTimeToLive(60*20);
         
-        $notificationBuilder = new PayloadNotificationBuilder('Bangdu #Bakuda');
-        $notificationBuilder->setBody('ayo lihat ada kabar baik untuk kamu!')
-                    ->setSound('default');
-        $dataBuilder = new PayloadDataBuilder();
-        $dataBuilder->addData(['a_data' => 'my_data']);
+    //     $notificationBuilder = new PayloadNotificationBuilder('Bangdu #Bakuda');
+    //     $notificationBuilder->setBody('ayo lihat ada kabar baik untuk kamu!')
+    //                 ->setSound('default');
+    //     $dataBuilder = new PayloadDataBuilder();
+    //     $dataBuilder->addData(['a_data' => 'my_data']);
 
-        $option = $optionBuilder->build();
-        $notification = $notificationBuilder->build();
-        $_data = $dataBuilder->build();
-        $token = $data->waris->fcm_token;
-        $downstreamResponse = FCM::sendTo($token, $option, $notification, $_data);
+    //     $option = $optionBuilder->build();
+    //     $notification = $notificationBuilder->build();
+    //     $_data = $dataBuilder->build();
+    //     $token = $data->waris->fcm_token;
+    //     $downstreamResponse = FCM::sendTo($token, $option, $notification, $_data);
 
-            # code...
-            return response()->json([
-                'status' => true,
-                'message' => 'acc',
-                'data' => new BerkasResource($data)
-            ],200);        
-     }
+    //         # code...
+    //         return response()->json([
+    //             'status' => true,
+    //             'message' => 'acc',
+    //             'data' => new BerkasResource($data)
+    //         ],200);        
+    //  }
      #melihat data baru
 
      public function dataMasuk(){
@@ -339,36 +361,36 @@ class BerkasController extends Controller
          }
      }
 
-     #melihat data confrimed III nilai true
-     public function dataConfirmedIII(){
-        $data = Data::where('confirmed_III','1')->where('confirmed_I','1')->where('confirmed_II','1')->where('confirmed_IV')->get();
-        return response()->json([
-            'status'=>true,
-            'message'=>'data tampil',
-            'data'=> BerkasResource::collection($data)
-        ], 200);
+    //  #melihat data confrimed III nilai true
+    //  public function dataConfirmedIII(){
+    //     $data = Data::where('confirmed_III','1')->where('confirmed_I','1')->where('confirmed_II','1')->where('confirmed_IV')->get();
+    //     return response()->json([
+    //         'status'=>true,
+    //         'message'=>'data tampil',
+    //         'data'=> BerkasResource::collection($data)
+    //     ], 200);
 
-        return response()->json([
-           'status'=> false,
-           'message'=>'gagal nyambung',
-           'data'=> (object) []
-       ], 401);
-    }
+    //     return response()->json([
+    //        'status'=> false,
+    //        'message'=>'gagal nyambung',
+    //        'data'=> (object) []
+    //    ], 401);
+    // }
 
-    public function dataConfirmedIV(){
-        $data = Data::where('confirmed_III','1')->where('confirmed_I','1')->where('confirmed_II','1')->where('confirmed_IV','1')->get();
-        return response()->json([
-            'status'=>true,
-            'message'=>'data tampil',
-            'data'=> BerkasResource::collection($data)
-        ], 200);
+    // public function dataConfirmedIV(){
+    //     $data = Data::where('confirmed_III','1')->where('confirmed_I','1')->where('confirmed_II','1')->where('confirmed_IV','1')->get();
+    //     return response()->json([
+    //         'status'=>true,
+    //         'message'=>'data tampil',
+    //         'data'=> BerkasResource::collection($data)
+    //     ], 200);
 
-        return response()->json([
-           'status'=> false,
-           'message'=>'gagal nyambung',
-           'data'=> (object) []
-       ], 401);
-    }
+    //     return response()->json([
+    //        'status'=> false,
+    //        'message'=>'gagal nyambung',
+    //        'data'=> (object) []
+    //    ], 401);
+    // }
 
     #search by hari,bulan, tahun
     public function search(Request $request){
@@ -381,7 +403,7 @@ class BerkasController extends Controller
     {
         $date = date_create($request->filter);
         $filter = Data::whereMonth('updated_at', date_format($date, 'm'))
-            ->whereYear('updated_at', date_format($date, 'Y'))->where('confirmed_III', true)->where('confirmed_I', true)->where('confirmed_II', true)->get();
+            ->whereYear('updated_at', date_format($date, 'Y'))->where('confirmed_I', true)->where('confirmed_II')->get();
         return response()->json([
             'status' => true,
             'message'=>'pencarian berhasil',
@@ -407,7 +429,7 @@ class BerkasController extends Controller
     public function grafik(){
 
 
-        $data = Data::all()->where('confirmed_IV','1')->groupBy(function($query){
+        $data = Data::all()->where('confirmed_II','1')->groupBy(function($query){
             return $query->waris->kec;
         });
 

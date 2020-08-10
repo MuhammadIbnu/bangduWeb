@@ -41,12 +41,20 @@ class BerkasResource extends JsonResource
             'buku_tabungan'=>$this->buku_tabungan,
             'keterangan' => $this->keterangan,
             'keterangan_II' => $this->keterangan_II,
-            'keterangan_III' => $this->keterangan_III,
-            'keterangan_IV' => $this->keterangan_IV,
+            'date_transfer'=>$this->date_transfer,
+            'date_konfirmasi'=>$this->date_konfirmasi,
+            'ket_ktp_meninggal' => $this->ket_ktp_meninggal,
+            'ket_kk_meninggal' => $this->ket_kk_meninggal,
+            'ket_jamkesmas' => $this->ket_jamkesmas,
+            'ket_ktp_waris' => $this->ket_ktp_waris,
+            'ket_kk_waris' => $this->ket_kk_waris,
+            'ket_akta_kematian' => $this->ket_akta_kematian,
+            'ket_pakta_waris' => $this->ket_pakta_waris,
+            'ket_pernyataan_waris'=>$this->ket_pernyataan_ahli_waris,
+            'ket_buku_tabungan'=>$this->ket_buku_tabungan,
             'confirmed_I'=> $this->confirmed_I,
             'confirmed_II'=> $this->confirmed_II,
-            'confirmed_III'=>$this->confirmed_III,
-            'confirmed_IV'=>$this->confirmed_IV,
+            
         ];
         //'confirmed_III'=>($this->confirmed_III == 1) ? true : false
     }

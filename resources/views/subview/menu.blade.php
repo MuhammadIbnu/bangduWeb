@@ -14,7 +14,6 @@
       </a>
       <ul class="treeview-menu">
           <li ><a href="{{route('petugas.index')}}"><i class="fa fa-circle-o"></i> pegawai disdukcapil</a></li>
-          <li ><a href="{{route('dinkes.index')}}"><i class="fa fa-circle-o"></i> pegawai dinkes</a></li>
           <li ><a href="{{route('bakuda.index')}}"><i class="fa fa-circle-o"></i> pegawai bakuda</a></li>
       </ul>
     </li>
