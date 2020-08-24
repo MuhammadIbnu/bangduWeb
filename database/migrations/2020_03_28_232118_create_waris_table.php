@@ -32,7 +32,7 @@ class CreateWarisTable extends Migration
             $table->string('password',60);
             $table->string('api_token',80)->unique()->nullable()->default(null);
             $table->string('fcm_token')->nullable();
-            $table->string('no_rek')->nullable();
+            $table->string('no_hp',15)->nullable();
             $table->timestamps();
         });
     }

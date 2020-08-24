@@ -17,7 +17,7 @@ class BerkasResource extends JsonResource
         return [
             'kd_berkas' => $this->kd_berkas,
             'petugas'=>  $this->petugas ? ['username'=> $this->petugas->username,'nama'=> $this->petugas->nama] : (object)[],
-            'dinkes'=> $this->dinkes ? ['username'=>$this->dinkes->username,'nama'=> $this->dinkes->nama] : (object) [],
+            'bakuda'=> $this->bakuda ? ['username'=>$this->dinkes->username,'nama'=> $this->bakuda->nama] : (object) [],
             'waris' => [
                     'nik' => $this->waris->nik,
                     'kk' => $this->waris->kk,
@@ -41,8 +41,8 @@ class BerkasResource extends JsonResource
             'buku_tabungan'=>$this->buku_tabungan,
             'keterangan' => $this->keterangan,
             'keterangan_II' => $this->keterangan_II,
-            'date_transfer'=>$this->date_transfer->format('Y-m-d H:i'),
-            'date_konfirmasi'=>$this->date_konfirmasi->format('Y-m-d H:i'),
+            'date_transfer'=>$this->date_transfer->format('Y-m-d H:i:s'),
+            'date_konfirmasi'=>$this->date_konfirmasi->format('Y-m-d H:i:s'),
             'ket_ktp_meninggal' => $this->ket_ktp_meninggal,
             'ket_kk_meninggal' => $this->ket_kk_meninggal,
             'ket_jamkesmas' => $this->ket_jamkesmas,
