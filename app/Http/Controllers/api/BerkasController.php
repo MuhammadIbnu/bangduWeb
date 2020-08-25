@@ -312,7 +312,7 @@ class BerkasController extends Controller
      #melihat data baru
 
      public function dataMasuk(){
-        $data = Data::where('confirmed_I')->where('confirmed_II')->where('confirmed_III')->get();
+        $data = Data::where('confirmed_I')->where('confirmed_II')->get();
         return response()->json([
             'status'=>true,
             'message'=> 'data masuk',
