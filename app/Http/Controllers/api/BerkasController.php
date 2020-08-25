@@ -185,8 +185,7 @@ class BerkasController extends Controller
         $data->ket_pernyataan_ahli_waris = $request->ket_pernyataan_ahli_waris;
         $data->ket_pakta_waris = $request->ket_pakta_waris;
         $data->ket_buku_tabungan = $request->ket_buku_tabungan;
-        $data->date_konfirmasi= Carbon::now()->format('Y-m-d');
-
+        $data->date_konfirmasi= Carbon::now()->format('Y-m-d H:i:s');
         $data->update();
 
         $optionBuilder = new OptionsBuilder();
@@ -225,7 +224,7 @@ class BerkasController extends Controller
          $data->ket_pernyataan_ahli_waris = $request->ket_pernyataan_ahli_waris;
          $data->ket_pakta_waris = $request->ket_pakta_waris;
          $data->ket_buku_tabungan = $request->ket_buku_tabungan;
-         $data->date_transfer= Carbon::now($request->date_transfer)->format('Y-m-d');
+         $data->date_transfer= Carbon::now($request->date_transfer)->format('Y-m-d H:i:s');
          $data->update();
          $optionBuilder = new OptionsBuilder();
          $optionBuilder->setTimeToLive(60*20);
