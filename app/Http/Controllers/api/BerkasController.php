@@ -181,7 +181,7 @@ class BerkasController extends Controller
         $data->ket_jamkesmas = $request->ket_jamkesmas;
         $data->ket_ktp_waris = $request->ket_ktp_waris;
         $data->ket_kk_waris = $request->ket_kk_waris;
-        $data->ket_akta_kematiam = $request->ket_akta_kematian;
+        $data->ket_akta_kematian = $request->ket_akta_kematian;
         $data->ket_pernyataan_ahli_waris = $request->ket_pernyataan_ahli_waris;
         $data->ket_pakta_waris = $request->ket_pakta_waris;
         $data->ket_buku_tabungan = $request->ket_buku_tabungan;
