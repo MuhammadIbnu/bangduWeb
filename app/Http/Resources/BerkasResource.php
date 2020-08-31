@@ -17,7 +17,7 @@ class BerkasResource extends JsonResource
         return [
             'kd_berkas' => $this->kd_berkas,
             'petugas'=>  $this->petugas ? ['username'=> $this->petugas->username,'nama'=> $this->petugas->nama] : (object)[],
-            'bakuda'=> $this->bakuda ? ['username'=>$this->dinkes->username,'nama'=> $this->bakuda->nama] : (object) [],
+            'bakuda'=> $this->bakuda ? ['username'=>$this->bakuda->username,'nama'=> $this->bakuda->nama] : (object) [],
             'waris' => [
                     'nik' => $this->waris->nik,
                     'kk' => $this->waris->kk,
