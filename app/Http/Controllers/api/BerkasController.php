@@ -212,7 +212,7 @@ class BerkasController extends Controller
 
      public function confirmed_II(Request $request, $data){
          $data = Data::where('kd_berkas', $data)->first();
-         $data->kd_dinkes =  Auth::user()->id;
+         $data->kd_bakuda = Auth::user()->id;
          $data->confirmed_II = $request->confirmed_II;
          $data->keterangan_II = $request->keterangan_II;
          $data->ket_ktp_meninggal = $request->ket_ktp_meninggal;
