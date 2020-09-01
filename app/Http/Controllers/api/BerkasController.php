@@ -361,7 +361,7 @@ class BerkasController extends Controller
      }
 
      public function dataFail(){
-         $data = Data::where('confirmed_I','0')->where('confirmed_II','0')->get();
+         $data = Data::where('confirmed_I','0')->orwhere('confirmed_II','0')->get();
          if ($data) {
              # code...
             return response()->json([
