@@ -360,6 +360,24 @@ class BerkasController extends Controller
          }
      }
 
+     public function dataFail(){
+         $data = Data::where('confirmed_I','false')->where('confirmed_II','false')->get();
+         if ($data) {
+             # code...
+            return response()->json([
+                'status'=> true,
+                'message'=>'data tampil',
+                'data'=> BerkasResource::collection($data)
+            ], 200);
+         }else {
+            # code...
+            return response()->json([
+               'status'=> false,
+               'message'=>'gagal nyambung',
+               'data'=> (object) []
+           ], 401);
+        }   
+     }
     //  #melihat data confrimed III nilai true
     //  public function dataConfirmedIII(){
     //     $data = Data::where('confirmed_III','1')->where('confirmed_I','1')->where('confirmed_II','1')->where('confirmed_IV')->get();
