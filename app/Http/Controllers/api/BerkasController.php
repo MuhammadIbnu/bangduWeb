@@ -191,7 +191,7 @@ class BerkasController extends Controller
         $optionBuilder = new OptionsBuilder();
         $optionBuilder->setTimeToLive(60*20);
         
-        $notificationBuilder = new PayloadNotificationBuilder('Bangdu #Disdukcapil');
+        $notificationBuilder = new PayloadNotificationBuilder('Bantuan Uang Duka #Disdukcapil');
         $notificationBuilder->setBody('ayo lihat berkas kamu apakah diterima?')
                     ->setSound('default');
         $dataBuilder = new PayloadDataBuilder();
@@ -229,8 +229,8 @@ class BerkasController extends Controller
          $optionBuilder = new OptionsBuilder();
          $optionBuilder->setTimeToLive(60*20);
          
-         $notificationBuilder = new PayloadNotificationBuilder('Bangdu #Dinkes');
-         $notificationBuilder->setBody('ayo lihat berkas kamu apakah diterima?')
+         $notificationBuilder = new PayloadNotificationBuilder('Bantuan Uang Duka #Bakeuda');
+         $notificationBuilder->setBody('ayo lihat ada kabar baik untuk kamu!')
                      ->setSound('default');
          $dataBuilder = new PayloadDataBuilder();
          $dataBuilder->addData(['a_data' => 'my_data']);

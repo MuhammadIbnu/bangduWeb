@@ -119,29 +119,14 @@
                                 @endif</td>
                         </tr>
                         <tr>
-                            <td>pengecekan dinas sosial</td>
+                            <td>Badan Keuangan Daerah</td>
                             <td>:</td>
                             <td>@if ($aktivitas->confirmed_II == true)<button type="button" class="btn btn-primary"> Sukses </button>
                                 @elseif($aktivitas->confirmed_II === null)<button type="button" class="btn btn-warning"> sedang divalidasi </button> 
                                 @else <button type="button" class="btn btn-danger"> Belum </button>  
                                 @endif</td>
                         </tr>
-                        <tr>
-                            <td>Pengesahan</td>
-                            <td>:</td>
-                            <td>@if ($aktivitas->confirmed_III == true)<button type="button" class="btn btn-primary"> Sukses </button>
-                                @elseif($aktivitas->confirmed_III === null)<button type="button" class="btn btn-warning"> sedang divalidasi </button> 
-                                @else <button type="button" class="btn btn-danger"> belum </button>  
-                            @endif</td>
-                        </tr>
-                        <tr>
-                            <td>Pencairan dana</td>
-                            <td>:</td>
-                            <td>@if ($aktivitas->confirmed_IV == true)<button type="button" class="btn btn-primary"> Dana Cair </button>
-                                @elseif($aktivitas->confirmed_IV === null)<button type="button" class="btn btn-warning"> sedang divalidasi </button> 
-                                @else <button type="button" class="btn btn-danger"> belum </button>  
-                            @endif</td>
-                        </tr>
+                        
                    </table>
                 </div>
             </div>
