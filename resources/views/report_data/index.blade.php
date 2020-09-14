@@ -61,8 +61,9 @@
                                     <td>{{$row->waris->kk}}</td>
                                     <td>{{$row->waris->nama}}</td>
                                     <td>{{$row->updated_at->format('d/m/Y')}}</td>
-                                    <td>@if ($row->confirmed_II == 1)<button type="button" class="btn btn-primary">sukses</button>
-                                        @elseif($row->confirmed_II == 0)<button type="button" class="btn btn-danger">gagal</button>   
+                                    <td>@if ($row->confirmed_II == true)<button type="button" class="btn btn-primary"> Sukses </button>
+                                        @elseif($row->confirmed_II === null)<button type="button" class="btn btn-warning"> sedang divalidasi </button> 
+                                        @else <button type="button" class="btn btn-danger"> gagal </button>    
                                     @endif</td>
                                     <td>{{$row->petugas->nama}}</td>
                                 </tr>
