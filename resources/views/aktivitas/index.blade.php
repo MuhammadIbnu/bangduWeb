@@ -46,9 +46,9 @@
                                     <td>{{$loop->iteration + ($aktivitas->perPage() *($aktivitas->currentPage()-1))}} </td>
                                     <td>{{$row->waris->nama}}</td>
                                     <td>{{$row->created_at->format('d/m/Y')}}</td>
-                                    <td>@if ($row->confirmed_I === true)
-                                        <button type="button" class="label label-success">Diterima</button> 
-                                        @elseif($row->confirmed_I === null)
+                                    <td>@if ($row->confirmed_II === true)
+                                        <button type="button" class="btn btn-success">Diterima</button> 
+                                        @elseif($row->confirmed_II === null)
                                         <button type="button" class="btn btn-warning">Sedang dievaluasi</button>  
                                         @else
                                         <button type="button" class="btn btn-danger">ditolak</button>
