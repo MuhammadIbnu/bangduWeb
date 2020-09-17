@@ -47,8 +47,8 @@ class CreateDataTable extends Migration
             $table->text('ket_pernyataan_ahli_waris')->nullable();
             $table->text('ket_pakta_waris')->nullable();
             $table->text('ket_buku_tabungan')->nullable();
-            $table->text('report')->nullalbe();
-            $table->text('date_report')->nullalbe();
+            $table->text('report')->nullable();
+            $table->text('date_report')->nullable();
             $table->foreign('kd_petugas')->references('id')->on('petugas')->onDelete('cascade');
             // $table->foreign('kd_dinkes')->references('id')->on('dinkes')->onDelete('cascade');
             $table->foreign('kd_waris')->references('id')->on('waris')->onDelete('cascade');
