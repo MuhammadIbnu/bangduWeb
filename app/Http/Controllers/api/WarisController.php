@@ -49,9 +49,29 @@ class WarisController extends Controller
                 'message'=>'gagal nyambung',
                 'data'=> (object) []
             ], 401);
-                    
+    }
 
-            }
+    public function report(){
+        $id = Auth::guard('api_waris')->user()->id;
+        $data = Data::where('kd_waris',$id)->latest()->first();
+        $data->report = $request->report;
+        $data->date_report = Carbon::now($request->date_report)->format('Y-m-d H:i:s');
+        $data->update();
+        if ($data) {
+            # code...
+            return response()->json([
+                'status'=> true,
+                'message'=>'report berhasil'
+            ], 200);
+        }else {
+            return response()->json([
+                'status'=>false,
+                'message'=>'gagal'
+            ], 401);
+        }
+
+    }
+
 
    public function update(Request $request){
     $user = Auth::user();
