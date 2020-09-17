@@ -11,6 +11,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Waris;
 use App\Data;
 use Auth;
+use Carbon\Carbon;
 use Validator;
 
 
@@ -51,7 +52,7 @@ class WarisController extends Controller
             ], 401);
     }
 
-    public function report(){
+    public function report(Request $request, $data){
         $id = Auth::guard('api_waris')->user()->id;
         $data = Data::where('kd_waris',$id)->latest()->first();
         $data->report = $request->report;
