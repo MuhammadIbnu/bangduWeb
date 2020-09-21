@@ -52,7 +52,7 @@ class WarisController extends Controller
             ], 401);
     }
 
-    public function report(Request $request, $data){
+    public function report(Request $request){
         $id = Auth::guard('api_waris')->user()->id;
         $data = Data::where('kd_waris',$id)->latest()->first();
         $data->report = $request->report;
