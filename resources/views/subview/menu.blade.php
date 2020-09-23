@@ -19,12 +19,17 @@
     </li>
     <li>
       <a  href="{{route('aktivitas.index')}}">
-      <i class="fa fa-th"></i> <span>activitas petugas</span>
+      <i class="fa fa-th"></i> <span>aktivitas petugas</span>
       </a>
     </li>
     <li>
       <a href="{{route('report_data')}}">
-        <i class="fa fa-th"></i> <span>report pengesahan data</span>
+        <i class="fa fa-th"></i> <span>laporan pengesahan data</span>
+      </a>
+    </li>
+    <li>
+      <a href="{{route('report.index')}}">
+        <i class="fa fa-th"></i> <span>Laporan masyarakat</span>
       </a>
     </li>
   </ul>

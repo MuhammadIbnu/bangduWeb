@@ -45,4 +45,8 @@ Route::resource('aktivitas','AktivitasController');
 Route::get('report_data', 'BerkasController@index')->name('report_data');
 //pdf
 Route::get('cetak_pdf','BerkasController@cetak_pdf')->name('cetak_pdf');
+//report_pengajuan
+// Route::get('report', 'ReportController@index')->name('report');
+// Route::get('show/{id}', 'ReportController@show')->name('show');
+Route::resource('report', 'ReportsController');
 });

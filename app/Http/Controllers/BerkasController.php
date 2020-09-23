@@ -15,7 +15,7 @@ class BerkasController extends Controller
     {
         //
         global $report_data;
-        $report_data = Data::where('confirmed_IV','true')->orderBy('updated_at','DESC')->paginate(20);
+        $report_data = Data::where('confirmed_II','true')->orderBy('updated_at','DESC')->paginate(20);
         $start_date = $request->get('start_date');
         $end_date = $request->get('end_date');
         if ($start_date !="" && $end_date !="") {
@@ -33,7 +33,7 @@ class BerkasController extends Controller
     public function cetak_pdf(Request $request){
         $start = Carbon::parse($request->start_date)->format('Y-m-d');
         $end = Carbon::parse($request->end_date)->format('Y-m-d');
-        $report_data=Data::whereBetween('updated_at',[$start, $end])->orderBy('updated_at','DESC')->where('confirmed_IV','true')->paginate(20);
+        $report_data=Data::whereBetween('updated_at',[$start, $end])->orderBy('updated_at','DESC')->where('confirmed_II','true')->paginate(20);
         $pdf =PDF::loadview('report_data.data',compact('report_data'));
         return $pdf->stream();
     }
