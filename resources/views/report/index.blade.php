@@ -34,6 +34,8 @@
                             <tr>
                                 <th width="5%">No</th>
                                 <th>Nama pengaju</th>
+                                <th>Pegawai Disdukcapil</th>
+                                <th>Pegawai Bakeuda</th>
                                 <th>Laporan</th>
                                 <th>Tanggal pengajuan</th>
                                 <th>Tanggal Lapor</th>
@@ -45,6 +47,16 @@
                                 <tr>
                                     <td>{{$loop->iteration + ($report->perPage() *($report->currentPage()-1))}} </td>
                                     <td>{{$row->waris->nama}}</td>
+                                    <td>@if ($row->petugas == null)
+                                    belum Diperiksa    
+                                    @else
+                                        {{$row->petugas->nama}}
+                                    @endif</td>
+                                    <td>@if ($row->bakuda == null)
+                                        belum Diperiksa    
+                                        @else
+                                            {{$row->bakuda->nama}}
+                                        @endif</td>
                                     <td>{{$row->report}}</td>
                                     <td>{{$row->created_at->format('Y-m-d H:i:s')}}</td>
                                     <td>{{$row->date_report}}</td>
