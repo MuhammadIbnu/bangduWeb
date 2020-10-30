@@ -11,6 +11,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Waris;
 use App\Data;
 use Auth;
+use Storage;
 use Carbon\Carbon;
 use Validator;
 
@@ -67,8 +68,16 @@ class WarisController extends Controller
             ], 400);
         }
         $data->report = $request->report;
-        $data->image_report=$request->image_report;
         $data->date_report = Carbon::now($request->date_report)->format('Y-m-d H:i:s');
+        if ($request->file('image_report')->isValid()) {
+            # code...
+            $gambar_berkas = $request->file('image_report');
+            $extention = $gambar_berkas->getClientOriginalExtension();
+            $namaFoto = "image_report".date('YmdHis').".".$extention;
+            $file_path = "image_report/" . $namaFoto;
+            Storage::disk('s3')->put($file_path, file_get_contents($gambar_berkas));
+            $data->image_report = Storage::disk('s3')->url($file_path, $namaFoto);
+        }
         $data->update();
         if ($data) {
             # code...
