@@ -45,7 +45,7 @@
                         <span class="info-box-icon bg-green"><i class="ion ion-ios-person-outline"></i></span>
                         <div class="info-box-content">
                           <span class="info-box-text">Petugas Disdukcapil</span>
-                        <span class="info-box-number">{{$petugas}}</span>
+                        <span class="info-box-number"></span>
                         </div>
                         <!-- /.info-box-content -->
                       </div>

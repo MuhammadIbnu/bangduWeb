@@ -55,7 +55,19 @@ class WarisController extends Controller
     public function report(Request $request){
         $id = Auth::guard('api_waris')->user()->id;
         $data = Data::where('kd_waris',$id)->latest()->first();
+        $rules =[
+            'image_report'=>'image|mimes:jpeg,jpg,png|max:2048',
+            'report'=>'required'
+        ];
+        $validasi = Validator::make($request->all(),$rules);
+        if($validasi->fails()){
+            return response()->json([
+                "status"=>false,
+                "massage"=>$validasi->errors()
+            ], 400);
+        }
         $data->report = $request->report;
+        $data->image_report=$request->image_report;
         $data->date_report = Carbon::now($request->date_report)->format('Y-m-d H:i:s');
         $data->update();
         if ($data) {

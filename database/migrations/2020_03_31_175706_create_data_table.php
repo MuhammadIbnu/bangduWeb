@@ -28,8 +28,11 @@ class CreateDataTable extends Migration
             $table->string('pernyataan_ahli_waris')->nullable();
             $table->string('pakta_waris')->nullable();
             $table->string('buku_tabungan')->nullable();
+            $table->string('image_report')->nullable();
             $table->boolean('confirmed_I')->nullable();
             $table->boolean('confirmed_II')->nullable();
+            $table->boolean('status_data')->nullable();
+            $table->integer('status_report')->nullable();
             // $table->boolean('confirmed_III')->nullable();
             // $table->boolean('confirmed_IV')->nullable();
             $table->text('keterangan')->nullable();
@@ -48,6 +51,7 @@ class CreateDataTable extends Migration
             $table->text('ket_pakta_waris')->nullable();
             $table->text('ket_buku_tabungan')->nullable();
             $table->text('report')->nullable();
+            $table->text('answer_report')->nullable();
             $table->text('date_report')->nullable();
             $table->foreign('kd_petugas')->references('id')->on('petugas')->onDelete('cascade');
             // $table->foreign('kd_dinkes')->references('id')->on('dinkes')->onDelete('cascade');
