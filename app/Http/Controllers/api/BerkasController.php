@@ -359,7 +359,7 @@ class BerkasController extends Controller
             ], 401);
          }
      }
-
+    //melihat data
      public function dataFail(){
          $data = Data::where('confirmed_I','0')->orwhere('confirmed_II','0')->get();
          if ($data) {
@@ -377,6 +377,24 @@ class BerkasController extends Controller
                'data'=> (object) []
            ], 401);
         }   
+     }
+     //melihat data report
+     public function dataReport(){
+         $data = Data::whereNotNull('report')->get();
+         if ($data) {
+             # code...
+             return response()->json([
+                 'status'=> true,
+                 'message'=>'data tampil',
+                 'data'=> BerkasResource::collection($data)
+             ], 200);
+         }else{
+             return response()->json([
+                 'status'=>false,
+                 'message'=>'gagal',
+                 'data'=> (object)[]
+             ], 401);
+         }
      }
     //  #melihat data confrimed III nilai true
     //  public function dataConfirmedIII(){
