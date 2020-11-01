@@ -378,9 +378,9 @@ class BerkasController extends Controller
            ], 401);
         }   
      }
-     //melihat data report
+     //melihat data report dukcapil
      public function dataReport(){
-         $data = Data::whereNotNull('report')->get();
+         $data = Data::whereNotNull('report')->orwhere('confirmed_II','null')->get();
          if ($data) {
              # code...
              return response()->json([
@@ -396,6 +396,24 @@ class BerkasController extends Controller
              ], 401);
          }
      }
+     //melihat data report transfer bakeuda
+     public function dataReportII(){
+        $data = Data::whereNotNull('report')->orwhere('confirmed_I','1')->orwhere('confirmed_II','1')->orwhere('confirmed_II','0')->get();
+        if ($data) {
+            # code...
+            return response()->json([
+                'status'=> true,
+                'message'=>'data tampil',
+                'data'=> BerkasResource::collection($data)
+            ], 200);
+        }else{
+            return response()->json([
+                'status'=>false,
+                'message'=>'gagal',
+                'data'=> (object)[]
+            ], 401);
+        }
+    }
     //  #melihat data confrimed III nilai true
     //  public function dataConfirmedIII(){
     //     $data = Data::where('confirmed_III','1')->where('confirmed_I','1')->where('confirmed_II','1')->where('confirmed_IV')->get();
