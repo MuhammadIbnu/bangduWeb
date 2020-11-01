@@ -361,7 +361,7 @@ class BerkasController extends Controller
      }
     //melihat data
      public function dataFail(){
-         $data = Data::where('confirmed_I','0')->orwhere('confirmed_II','0')->get();
+         $data = Data::where('confirmed_I','0')->orwhere('confirmed_II')->get();
          if ($data) {
              # code...
             return response()->json([
@@ -380,7 +380,7 @@ class BerkasController extends Controller
      }
      //melihat data report dukcapil
      public function dataReport(){
-         $data = Data::whereNotNull('report')->orwhere('confirmed_II','null')->get();
+         $data = Data::whereNotNull('report')->orwhere('confirmed_II','')->get();
          if ($data) {
              # code...
              return response()->json([
