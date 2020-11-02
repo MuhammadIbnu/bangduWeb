@@ -48,7 +48,7 @@ Route::group(['prefix' => 'petugas'], function () {
     Route::post('acc/{data}', 'api\BerkasController@confirmed_III')->middleware('auth:api_petugas');
     Route::get('datafail', 'api\BerkasController@dataFail')->middleware('auth:api_petugas');
     Route::get('listReport', 'api\BerkasController@dataReport')->middleware('auth:api_petugas');
-    Route::post('answerreport', 'api\BerkasController@answerI')->middleware('auth:api_petugas');
+    Route::post('answerreport/{data}', 'api\BerkasController@answerI')->middleware('auth:api_petugas');
     Route::get('listsurvey', 'api\SurveyController@index');
 });
 
@@ -70,7 +70,7 @@ Route::group(['prefix' => 'bakuda'], function () {
     Route::get('dataconfirmedII','api\BerkasController@dataConfirmedII')->middleware('auth:api_bakuda');
     Route::get('dataconfirmedI','api\BerkasController@dataConfirmedI')->middleware('auth:api_bakuda');
     Route::get('listReportII', 'api\BerkasController@dataReportII')->middleware('auth:api_bakuda');
-    Route::post('answerreportII', 'api\BerkasController@answerII')->middleware('auth:api_bakuda');
+    Route::post('answerreportII/{data}', 'api\BerkasController@answerII')->middleware('auth:api_bakuda');
     Route::post('berkas/{data}', 'api\BerkasController@confirmed_II')->middleware('auth:api_bakuda');
 });
 
