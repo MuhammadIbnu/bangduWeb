@@ -54,6 +54,8 @@ class BerkasResource extends JsonResource
             'ket_buku_tabungan'=>$this->ket_buku_tabungan,
             'confirmed_I'=> $this->confirmed_I,
             'confirmed_II'=> $this->confirmed_II,
+            'report'=> $this->report,
+            'date_report' => $this->date_report
             
         ];
         //'confirmed_III'=>($this->confirmed_III == 1) ? true : false
