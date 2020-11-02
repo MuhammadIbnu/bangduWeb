@@ -425,7 +425,7 @@ class BerkasController extends Controller
      }
      //melihat data report transfer bakeuda
      public function dataReportII(){
-        $data = Data::where('confirmed_I','1')->where('confirmed_II','1')->where('confirmed_II','0')->whereNotNull('report')->get();
+        $data = Data::where('confirmed_I','1')->whereNotNull('confirmed_II')->whereNotNull('report')->get();
         if ($data) {
             # code...
             return response()->json([
