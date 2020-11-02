@@ -248,7 +248,7 @@ class BerkasController extends Controller
          ], 200);
      }
 
-     public function answer(Request $request, $data){
+     public function answerI(Request $request, $data){
         $data = Data::where('kd_berkas', $data)->first();
         $data->kd_petugas = Auth::user()->id;
         $data->answer_report = $request->answer_report;
