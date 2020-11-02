@@ -53,6 +53,7 @@ class CreateDataTable extends Migration
             $table->text('report')->nullable();
             $table->text('answer_report')->nullable();
             $table->text('date_report')->nullable();
+            $table->text('date_answer_report')->nullable();
             $table->foreign('kd_petugas')->references('id')->on('petugas')->onDelete('cascade');
             // $table->foreign('kd_dinkes')->references('id')->on('dinkes')->onDelete('cascade');
             $table->foreign('kd_waris')->references('id')->on('waris')->onDelete('cascade');

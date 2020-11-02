@@ -68,7 +68,7 @@ Route::group(['prefix' => 'bakuda'], function () {
     Route::get('profile', 'api\BakudaController@profile')->middleware('auth:api_bakuda');
     Route::get('dataconfirmedII','api\BerkasController@dataConfirmedII')->middleware('auth:api_bakuda');
     Route::get('dataconfirmedI','api\BerkasController@dataConfirmedI')->middleware('auth:api_bakuda');
-    Route::get('listReportII', 'api\BerkasController@dataReport')->middleware('auth:api_petugas');
+    Route::get('listReportII', 'api\BerkasController@dataReport')->middleware('auth:api_bakuda');
     Route::post('berkas/{data}', 'api\BerkasController@confirmed_II')->middleware('auth:api_bakuda');
 });
 
