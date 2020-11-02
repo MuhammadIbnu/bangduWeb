@@ -252,7 +252,7 @@ class BerkasController extends Controller
         $data = Data::where('kd_berkas', $data)->first();
         $data->kd_petugas = Auth::user()->id;
         $data->answer_report = $request->answer_report;
-        // $data->date_transfer= Carbon::now($request->date_transfer)->format('Y-m-d H:i:s');
+        $data->date_answer_report= Carbon::now($request->date_answer_report)->format('Y-m-d H:i:s');
         $data->update();
         // $optionBuilder = new OptionsBuilder();
         // $optionBuilder->setTimeToLive(60*20);
@@ -280,7 +280,7 @@ class BerkasController extends Controller
         $data = Data::where('kd_berkas', $data)->first();
         $data->kd_bakuda = Auth::user()->id;
         $data->answer_report = $request->answer_report;
-        // $data->date_transfer= Carbon::now($request->date_transfer)->format('Y-m-d H:i:s');
+        $data->date_answer_report = Carbon::now($request->date_answer_report)->format('Y-m-d H:i:s');
         $data->update();
         // $optionBuilder = new OptionsBuilder();
         // $optionBuilder->setTimeToLive(60*20);
