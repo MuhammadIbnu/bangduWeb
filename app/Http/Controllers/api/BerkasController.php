@@ -250,9 +250,37 @@ class BerkasController extends Controller
 
      public function answer(Request $request, $data){
         $data = Data::where('kd_berkas', $data)->first();
+        $data->kd_petugas = Auth::user()->id;
+        $data->answer_report = $request->answer_report;
+        // $data->date_transfer= Carbon::now($request->date_transfer)->format('Y-m-d H:i:s');
+        $data->update();
+        // $optionBuilder = new OptionsBuilder();
+        // $optionBuilder->setTimeToLive(60*20);
+        
+        // $notificationBuilder = new PayloadNotificationBuilder('Bantuan Uang Duka #JawabanLapor');
+        // $notificationBuilder->setBody('ayo lihat ada kabar baik untuk kamu!')
+        //             ->setSound('default');
+        // $dataBuilder = new PayloadDataBuilder();
+        // $dataBuilder->addData(['a_data' => 'my_data']);
+
+        // $option = $optionBuilder->build();
+        // $notification = $notificationBuilder->build();
+        // $_data = $dataBuilder->build();
+        // $token = $data->waris->fcm_token;
+        // $downstreamResponse = FCM::sendTo($token, $option, $notification, $_data);
+
+        return response()->json([
+            'status'=>true,
+            'message' => 'ok',
+            'data' => new BerkasResource($data)
+        ], 200);
+    }
+
+    public function answerII(Request $request, $data){
+        $data = Data::where('kd_berkas', $data)->first();
         $data->kd_bakuda = Auth::user()->id;
         $data->answer_report = $request->answer_report;
-        $data->date_transfer= Carbon::now($request->date_transfer)->format('Y-m-d H:i:s');
+        // $data->date_transfer= Carbon::now($request->date_transfer)->format('Y-m-d H:i:s');
         $data->update();
         // $optionBuilder = new OptionsBuilder();
         // $optionBuilder->setTimeToLive(60*20);
