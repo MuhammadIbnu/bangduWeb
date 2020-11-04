@@ -75,8 +75,7 @@ class WarisController extends Controller
 
         return response()->json([
             'status'=>true,
-            'message' => 'ok',
-            'data' => new BerkasResource($data)
+            'message' => 'berhasil',
         ], 200);
     }
 
