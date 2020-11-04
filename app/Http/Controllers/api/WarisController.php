@@ -53,6 +53,33 @@ class WarisController extends Controller
             ], 401);
     }
 
+    public function finish(Request $request){
+        $id = Auth::guard('api_waris')->user()->id;
+        $data = Data::where('kd_waris',$id)->latest()->first();
+        $data->status_data = $request->status_data;
+        $data->update();
+        // $optionBuilder = new OptionsBuilder();
+        // $optionBuilder->setTimeToLive(60*20);
+        
+        // $notificationBuilder = new PayloadNotificationBuilder('Bantuan Uang Duka #JawabanLapor');
+        // $notificationBuilder->setBody('ayo lihat ada kabar baik untuk kamu!')
+        //             ->setSound('default');
+        // $dataBuilder = new PayloadDataBuilder();
+        // $dataBuilder->addData(['a_data' => 'my_data']);
+
+        // $option = $optionBuilder->build();
+        // $notification = $notificationBuilder->build();
+        // $_data = $dataBuilder->build();
+        // $token = $data->waris->fcm_token;
+        // $downstreamResponse = FCM::sendTo($token, $option, $notification, $_data);
+
+        return response()->json([
+            'status'=>true,
+            'message' => 'ok',
+            'data' => new BerkasResource($data)
+        ], 200);
+    }
+
     public function report(Request $request){
         $id = Auth::guard('api_waris')->user()->id;
         $data = Data::where('kd_waris',$id)->latest()->first();
