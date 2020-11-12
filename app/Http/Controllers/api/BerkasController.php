@@ -435,7 +435,7 @@ class BerkasController extends Controller
      }
      //melihat data report dukcapil
      public function dataReport(){
-         $data = Data::whereNotNull('report')->where('confirmed_I')->get();
+         $data = Data::whereNotNull('report')->where('confirmed_I')->where('confirmed_I','0')->get();
          if ($data) {
              # code...
              return response()->json([
