@@ -55,6 +55,7 @@ class BerkasResource extends JsonResource
             'confirmed_I'=> $this->confirmed_I,
             'confirmed_II'=> $this->confirmed_II,
             'report'=> $this->report,
+            'image_report'=> $this->image_report,
             'date_report' => $this->date_report
             
         ];
