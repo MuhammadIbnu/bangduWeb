@@ -44,4 +44,22 @@ class SurveyController extends Controller
             'data'=> $data
         ], 200);
     }
+
+    public function rection(){
+        $surveys = Survey::all()->get();
+        if ($surveys) {
+            # code...
+            return response()->json([
+                'status'=> true,
+                'message'=>'berhasil tampil',
+                'data'=> $data
+            ], 200);
+        }else{
+            return response()->json([
+                'status'=>false,
+                'message'=>'gagal',
+                'data'=>(object)[]
+            ], 401);
+        }
+    }
 }
