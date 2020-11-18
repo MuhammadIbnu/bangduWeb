@@ -52,7 +52,7 @@ class SurveyController extends Controller
             return response()->json([
                 'status'=> true,
                 'message'=>'berhasil tampil',
-                'data'=> $data
+                'data'=> $surveys
             ], 200);
         }else{
             return response()->json([
