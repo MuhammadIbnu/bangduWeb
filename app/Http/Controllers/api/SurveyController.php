@@ -46,7 +46,7 @@ class SurveyController extends Controller
     }
 
     public function rection(){
-        $surveys = Survey::all()->get();
+        $surveys = Survey::get();
         if ($surveys) {
             # code...
             return response()->json([
