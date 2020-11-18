@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\SurveyResource;
 use App\Survey;
+use App\Http\Resources\SurveiResource;
 use Auth;
 
 class SurveyController extends Controller
@@ -52,7 +53,7 @@ class SurveyController extends Controller
             return response()->json([
                 'status'=> true,
                 'message'=>'berhasil tampil',
-                'data'=> $surveys
+                'data'=> SurveiResource::collection($surveys)
             ], 200);
         }else{
             return response()->json([
