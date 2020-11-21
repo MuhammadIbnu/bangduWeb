@@ -17,6 +17,7 @@ class CreateSurveyTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('kd_waris');
             $table->smallInteger('nilai');
+            $table->text('komentar')->nullable();
             $table->foreign('kd_waris')->references('id')->on('waris')->onDelete('cascade');
             $table->timestamps();
         });

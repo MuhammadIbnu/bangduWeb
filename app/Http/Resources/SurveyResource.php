@@ -20,7 +20,8 @@ class SurveyResource extends JsonResource
             //     'kk' => $this->waris->kk,
             //     'nama' => $this->waris->nama
             // ],
-            'nilai'=> $this->nilai
+            'nilai'=> $this->nilai,
+            'komentar'=> $this->komentar
         ];
     }
 }

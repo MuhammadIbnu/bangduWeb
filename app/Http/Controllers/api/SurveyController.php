@@ -19,6 +19,7 @@ class SurveyController extends Controller
         $survey = new Survey();
         $survey->kd_waris = auth()->user()->id;
         $survey->nilai = $request->nilai;
+        $survey->komentar=$request->komentar;
         $survey->save();
     
         return response()->json([
