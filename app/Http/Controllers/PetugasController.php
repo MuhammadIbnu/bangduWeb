@@ -128,9 +128,10 @@ class PetugasController extends Controller
     
     public function reset(Petugas $petugas)
     {
-        $petugas->password = bcrypt($petugas->username);
+        $petugas->password = "Halo";
         $petugas->update();
-        return redirect()->route('petugas.index')->with('status','akun petugas berhasil di reset');
+        dd($petugas);
+        return redirect()->route('petugas.index');
 
     }
 }
